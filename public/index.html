@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Institut BBA - Gestion des Bilans Visuels</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-icon"><i data-lucide="activity" class="icon-lg"></i></div>
+            <h1>Institut BBA</h1>
+            <p class="header-sub">Gestion des Bilans Visuels</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="showTab('nouveau')">
+                <i data-lucide="file-plus" class="icon-sm"></i>
+                <span>Nouveau Bilan</span>
+            </button>
+            <button class="tab-btn" onclick="showTab('liste')">
+                <i data-lucide="list" class="icon-sm"></i>
+                <span>Liste des Bilans</span>
+            </button>
+        </div>
+
+        <!-- ONGLET: NOUVEAU BILAN -->
+        <div id="nouveau" class="tab-content active">
+            <form id="bilanForm">
+                <div class="section">
+                    <h3><i data-lucide="user" class="icon-section"></i> Informations du Patient</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="nom">Nom *</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="prenom">Prénom *</label>
+                            <input type="text" id="prenom" name="prenom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="age">Âge *</label>
+                            <input type="number" id="age" name="age" min="0" max="120" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="sexe">Sexe *</label>
+                            <select id="sexe" name="sexe" required>
+                                <option value="">-- Sélectionner --</option>
+                                <option value="Masculin">Masculin</option>
+                                <option value="Féminin">Féminin</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="dateNaissance">Date de naissance</label>
+                            <input type="date" id="dateNaissance" name="dateNaissance">
+                        </div>
+                        <div class="form-group">
+                            <label for="telephone">Téléphone</label>
+                            <input type="tel" id="telephone" name="telephone">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="stethoscope" class="icon-section"></i> Motif de Consultation</h3>
+                    <div class="form-group">
+                        <label for="motifConsultation">Motif *</label>
+                        <select id="motifConsultation" name="motifConsultation" required>
+                            <option value="">-- Sélectionner --</option>
+                            <option value="Contrôle de routine">Contrôle de routine</option>
+                            <option value="Baisse d'acuité visuelle">Baisse d'acuité visuelle</option>
+                            <option value="Douleur oculaire">Douleur oculaire</option>
+                            <option value="Céphalées">Céphalées</option>
+                            <option value="Fatigue visuelle">Fatigue visuelle</option>
+                            <option value="Renouvellement de lunettes">Renouvellement de lunettes</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="antecedentsMedicaux">Antécédents médicaux</label>
+                        <textarea id="antecedentsMedicaux" name="antecedentsMedicaux" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="antecedentsOphtalmologiques">Antécédents ophtalmologiques</label>
+                        <textarea id="antecedentsOphtalmologiques" name="antecedentsOphtalmologiques" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="eye" class="icon-section"></i> Acuité Visuelle</h3>
+                    
+                    <h4>Œil Droit (OD)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="avOdLoinSc">Loin sans correction</label>
+                            <input type="text" id="avOdLoinSc" name="avOdLoinSc" placeholder="Ex: 10/10">
+                        </div>
+                        <div class="form-group">
+                            <label for="avOdLoinAc">Loin avec correction</label>
+                            <input type="text" id="avOdLoinAc" name="avOdLoinAc" placeholder="Ex: 10/10">
+                        </div>
+                        <div class="form-group">
+                            <label for="avOdPresSc">Près sans correction</label>
+                            <input type="text" id="avOdPresSc" name="avOdPresSc" placeholder="Ex: P3">
+                        </div>
+                        <div class="form-group">
+                            <label for="avOdPresAc">Près avec correction</label>
+                            <input type="text" id="avOdPresAc" name="avOdPresAc" placeholder="Ex: P2">
+                        </div>
+                    </div>
+
+                    <h4>Œil Gauche (OG)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="avOgLoinSc">Loin sans correction</label>
+                            <input type="text" id="avOgLoinSc" name="avOgLoinSc" placeholder="Ex: 10/10">
+                        </div>
+                        <div class="form-group">
+                            <label for="avOgLoinAc">Loin avec correction</label>
+                            <input type="text" id="avOgLoinAc" name="avOgLoinAc" placeholder="Ex: 10/10">
+                        </div>
+                        <div class="form-group">
+                            <label for="avOgPresSc">Près sans correction</label>
+                            <input type="text" id="avOgPresSc" name="avOgPresSc" placeholder="Ex: P3">
+                        </div>
+                        <div class="form-group">
+                            <label for="avOgPresAc">Près avec correction</label>
+                            <input type="text" id="avOgPresAc" name="avOgPresAc" placeholder="Ex: P2">
+                        </div>
+                    </div>
+
+                    <h4>Vision Binoculaire</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="avBinoLoin">Loin binoculaire</label>
+                            <input type="text" id="avBinoLoin" name="avBinoLoin">
+                        </div>
+                        <div class="form-group">
+                            <label for="avBinoPres">Près binoculaire</label>
+                            <input type="text" id="avBinoPres" name="avBinoPres">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="scan-eye" class="icon-section"></i> Réfraction</h3>
+                    
+                    <h4>Œil Droit (OD)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="refOdSphere">Sphère</label>
+                            <input type="number" id="refOdSphere" name="refOdSphere" step="0.25" placeholder="Ex: -2.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="refOdCylindre">Cylindre</label>
+                            <input type="number" id="refOdCylindre" name="refOdCylindre" step="0.25" placeholder="Ex: -1.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="refOdAxe">Axe (°)</label>
+                            <input type="number" id="refOdAxe" name="refOdAxe" min="0" max="180" placeholder="Ex: 90">
+                        </div>
+                        <div class="form-group">
+                            <label for="refOdAddition">Addition</label>
+                            <input type="number" id="refOdAddition" name="refOdAddition" step="0.25" placeholder="Ex: 2.00">
+                        </div>
+                    </div>
+
+                    <h4>Œil Gauche (OG)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="refOgSphere">Sphère</label>
+                            <input type="number" id="refOgSphere" name="refOgSphere" step="0.25" placeholder="Ex: -2.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="refOgCylindre">Cylindre</label>
+                            <input type="number" id="refOgCylindre" name="refOgCylindre" step="0.25" placeholder="Ex: -1.00">
+                        </div>
+                        <div class="form-group">
+                            <label for="refOgAxe">Axe (°)</label>
+                            <input type="number" id="refOgAxe" name="refOgAxe" min="0" max="180" placeholder="Ex: 90">
+                        </div>
+                        <div class="form-group">
+                            <label for="refOgAddition">Addition</label>
+                            <input type="number" id="refOgAddition" name="refOgAddition" step="0.25" placeholder="Ex: 2.00">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="test-tubes" class="icon-section"></i> Tests Complémentaires</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="motiliteOculaire">Motilité oculaire</label>
+                            <select id="motiliteOculaire" name="motiliteOculaire">
+                                <option value="Non testé">Non testé</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Anormal">Anormal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="visionBinoculaire">Vision binoculaire</label>
+                            <select id="visionBinoculaire" name="visionBinoculaire">
+                                <option value="Non testé">Non testé</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Anormal">Anormal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="champVisuel">Champ visuel</label>
+                            <select id="champVisuel" name="champVisuel">
+                                <option value="Non testé">Non testé</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Anormal">Anormal</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="testCouleur">Test de couleur</label>
+                            <select id="testCouleur" name="testCouleur">
+                                <option value="Non testé">Non testé</option>
+                                <option value="Normal">Normal</option>
+                                <option value="Anormal">Anormal</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="clipboard-check" class="icon-section"></i> Diagnostic et Observations</h3>
+                    <div class="form-group">
+                        <label for="anomaliesDetectees">Anomalies détectées</label>
+                        <select id="anomaliesDetectees" name="anomaliesDetectees" multiple size="6">
+                            <option value="Myopie">Myopie</option>
+                            <option value="Hypermétropie">Hypermétropie</option>
+                            <option value="Astigmatisme">Astigmatisme</option>
+                            <option value="Presbytie">Presbytie</option>
+                            <option value="Strabisme">Strabisme</option>
+                            <option value="Amblyopie">Amblyopie</option>
+                            <option value="Daltonisme">Daltonisme</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                        <small>Maintenez Ctrl/Cmd pour sélectionner plusieurs options</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="diagnostic">Diagnostic</label>
+                        <textarea id="diagnostic" name="diagnostic" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="observations">Observations</label>
+                        <textarea id="observations" name="observations" rows="3"></textarea>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="pill" class="icon-section"></i> Traitement et Suivi</h3>
+                    <div class="form-group">
+                        <label for="prescription">Prescription</label>
+                        <textarea id="prescription" name="prescription" rows="3" placeholder="Ordonnance de lunettes, lentilles, etc."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="orientation">Orientation</label>
+                        <textarea id="orientation" name="orientation" rows="2" placeholder="Consultation ophtalmologique, suivi, etc."></textarea>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3><i data-lucide="calendar" class="icon-section"></i> Informations Administratives</h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="dateExamen">Date de l'examen</label>
+                            <input type="date" id="dateExamen" name="dateExamen">
+                        </div>
+                        <div class="form-group">
+                            <label for="examinateur">Examinateur</label>
+                            <input type="text" id="examinateur" name="examinateur" placeholder="Nom de l'optométriste">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">
+                        <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan
+                    </button>
+                    <button type="reset" class="btn btn-secondary">
+                        <i data-lucide="rotate-ccw" class="icon-btn"></i> Réinitialiser
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ONGLET: LISTE DES BILANS -->
+        <div id="liste" class="tab-content">
+            <div class="section">
+                <div class="toolbar">
+                    <h3><i data-lucide="folder-open" class="icon-section"></i> Liste des Bilans</h3>
+                    <div class="toolbar-actions">
+                        <button onclick="loadBilans()" class="btn btn-secondary">
+                            <i data-lucide="refresh-cw" class="icon-btn"></i> Actualiser
+                        </button>
+                        <button onclick="exportCSV()" class="btn btn-primary">
+                            <i data-lucide="download" class="icon-btn"></i> Exporter CSV
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="filters">
+                    <div class="filter-item">
+                        <i data-lucide="search" class="icon-filter"></i>
+                        <input type="text" id="searchNom" placeholder="Rechercher par nom..." onkeyup="filterBilans()">
+                    </div>
+                    <select id="filterSexe" onchange="filterBilans()">
+                        <option value="">Tous les sexes</option>
+                        <option value="Masculin">Masculin</option>
+                        <option value="Féminin">Féminin</option>
+                    </select>
+                    <input type="date" id="filterDateDebut" onchange="filterBilans()">
+                    <input type="date" id="filterDateFin" onchange="filterBilans()">
+                </div>
+
+                <div id="bilansList" class="bilans-list">
+                    <p class="loading">Chargement...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL DÉTAILS BILAN -->
+    <div id="bilanModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <div class="modal-header">
+                <h3><i data-lucide="file-text" class="icon-section"></i> Détails du Bilan</h3>
+                <button class="modal-close" onclick="document.getElementById('bilanModal').classList.remove('show')">
+                    <i data-lucide="x" class="icon-btn"></i>
+                </button>
+            </div>
+            <div id="modalBody" class="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="notification" class="notification"></div>
+
+    <script src="js/app.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+</html>
