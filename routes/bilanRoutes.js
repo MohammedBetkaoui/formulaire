@@ -22,6 +22,132 @@ router.post('/', async (req, res) => {
   }
 });
 
+// Statistiques (must be before /:id)
+router.get('/stats/overview', async (req, res) => {
+  try {
+    const totalBilans = await BilanVisuel.countDocuments();
+    
+    const parSexe = await BilanVisuel.aggregate([
+      { $group: { _id: '$sexe', count: { $sum: 1 } } }
+    ]);
+    
+    const parAge = await BilanVisuel.aggregate([
+      {
+        $bucket: {
+          groupBy: '$age',
+          boundaries: [0, 18, 30, 45, 60, 100],
+          default: 'Autre',
+          output: { count: { $sum: 1 } }
+        }
+      }
+    ]);
+    
+    const anomaliesFrequentes = await BilanVisuel.aggregate([
+      { $unwind: '$typeAnomalie' },
+      { $group: { _id: '$typeAnomalie', count: { $sum: 1 } } },
+      { $sort: { count: -1 } },
+      { $limit: 10 }
+    ]);
+    
+    res.json({
+      success: true,
+      data: {
+        totalBilans,
+        parSexe,
+        parAge,
+        anomaliesFrequentes
+      }
+    });
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Erreur lors du calcul des statistiques',
+      error: error.message
+    });
+  }
+});
+
+// Exporter les bilans en CSV (must be before /:id)
+router.get('/export/csv', async (req, res) => {
+  try {
+    const bilans = await BilanVisuel.find().lean();
+    
+    if (bilans.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Aucun bilan à exporter'
+      });
+    }
+    
+    const flattenedData = bilans.map(bilan => ({
+      'ID Patient': bilan.idPatient,
+      'Date examen': bilan.dateExamen ? new Date(bilan.dateExamen).toLocaleDateString('fr-FR') : '',
+      Nom: bilan.nom,
+      Prénom: bilan.prenom,
+      Sexe: bilan.sexe,
+      Âge: bilan.age,
+      Profession: bilan.profession,
+      'Motif consultation': bilan.motifConsultation,
+      // Anamnèse
+      'Antécédents oculaires': bilan.antecedentsOculaires,
+      'Antécédents systémiques': bilan.antecedentsSystemiques,
+      'Correction actuelle': bilan.correctionActuelle,
+      'Puissance OD': bilan.puissanceVerresActuels?.od,
+      'Puissance OG': bilan.puissanceVerresActuels?.og,
+      // Pré-tests
+      'AVSC OD': bilan.avsc?.od,
+      'AVSC OG': bilan.avsc?.og,
+      'AVSC BIN': bilan.avsc?.bin,
+      'AVCC OD': bilan.avcc?.od,
+      'AVCC OG': bilan.avcc?.og,
+      'AVCC BIN': bilan.avcc?.bin,
+      'PIO OD': bilan.pio?.od,
+      'PIO OG': bilan.pio?.og,
+      'Motilité': bilan.motiliteOculaire,
+      'Ishihara': bilan.testIshihara,
+      // Réfraction Objective
+      'Réf Obj OD Sph': bilan.refractionObjective?.od?.sphere,
+      'Réf Obj OD Cyl': bilan.refractionObjective?.od?.cylindre,
+      'Réf Obj OD Axe': bilan.refractionObjective?.od?.axe,
+      'Réf Obj OG Sph': bilan.refractionObjective?.og?.sphere,
+      'Réf Obj OG Cyl': bilan.refractionObjective?.og?.cylindre,
+      'Réf Obj OG Axe': bilan.refractionObjective?.og?.axe,
+      // Réfraction Subjective
+      'Réf Sub OD Sph': bilan.refractionSubjective?.od?.sphere,
+      'Réf Sub OD Cyl': bilan.refractionSubjective?.od?.cylindre,
+      'Réf Sub OD Axe': bilan.refractionSubjective?.od?.axe,
+      'Acuité finale OD': bilan.refractionSubjective?.od?.acuiteFinale,
+      'Réf Sub OG Sph': bilan.refractionSubjective?.og?.sphere,
+      'Réf Sub OG Cyl': bilan.refractionSubjective?.og?.cylindre,
+      'Réf Sub OG Axe': bilan.refractionSubjective?.og?.axe,
+      'Acuité finale OG': bilan.refractionSubjective?.og?.acuiteFinale,
+      'Addition': bilan.visionDePres?.addition,
+      'Parinaud': bilan.visionDePres?.parinaud,
+      // Vision binoculaire
+      'Stéréopsie': bilan.stereopsie,
+      'PPC': bilan.ppc,
+      'Lampe à fente': bilan.examenLampeAFente,
+      // Diagnostic
+      'Type anomalie': bilan.typeAnomalie?.join('; '),
+      'Action entreprise': bilan.actionEntreprise,
+      'Notes': bilan.noteLibre
+    }));
+    
+    const parser = new Parser();
+    const csv = parser.parse(flattenedData);
+    
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename=bilans_visuels_${Date.now()}.csv`);
+    res.send('\ufeff' + csv);
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: 'Erreur lors de l\'export CSV',
+      error: error.message
+    });
+  }
+});
+
 // Récupérer tous les bilans
 router.get('/', async (req, res) => {
   try {
@@ -122,118 +248,6 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({
       success: false,
       message: 'Erreur lors de la suppression du bilan',
-      error: error.message
-    });
-  }
-});
-
-// Exporter les bilans en CSV
-router.get('/export/csv', async (req, res) => {
-  try {
-    const bilans = await BilanVisuel.find().lean();
-    
-    if (bilans.length === 0) {
-      return res.status(404).json({
-        success: false,
-        message: 'Aucun bilan à exporter'
-      });
-    }
-    
-    // Aplatir les données pour le CSV
-    const flattenedData = bilans.map(bilan => ({
-      ID: bilan._id,
-      Nom: bilan.nom,
-      Prénom: bilan.prenom,
-      Âge: bilan.age,
-      Sexe: bilan.sexe,
-      Téléphone: bilan.telephone,
-      'Date examen': bilan.dateExamen,
-      'Motif consultation': bilan.motifConsultation,
-      'Antécédents médicaux': bilan.antecedentsMedicaux,
-      'Antécédents ophtalmo': bilan.antecedentsOphtalmologiques,
-      'AV OD loin SC': bilan.acuiteVisuelle?.oeilDroit?.loin?.sansCorrection,
-      'AV OD loin AC': bilan.acuiteVisuelle?.oeilDroit?.loin?.avecCorrection,
-      'AV OD près SC': bilan.acuiteVisuelle?.oeilDroit?.pres?.sansCorrection,
-      'AV OD près AC': bilan.acuiteVisuelle?.oeilDroit?.pres?.avecCorrection,
-      'AV OG loin SC': bilan.acuiteVisuelle?.oeilGauche?.loin?.sansCorrection,
-      'AV OG loin AC': bilan.acuiteVisuelle?.oeilGauche?.loin?.avecCorrection,
-      'AV OG près SC': bilan.acuiteVisuelle?.oeilGauche?.pres?.sansCorrection,
-      'AV OG près AC': bilan.acuiteVisuelle?.oeilGauche?.pres?.avecCorrection,
-      'Sphère OD': bilan.refraction?.oeilDroit?.sphere,
-      'Cylindre OD': bilan.refraction?.oeilDroit?.cylindre,
-      'Axe OD': bilan.refraction?.oeilDroit?.axe,
-      'Addition OD': bilan.refraction?.oeilDroit?.addition,
-      'Sphère OG': bilan.refraction?.oeilGauche?.sphere,
-      'Cylindre OG': bilan.refraction?.oeilGauche?.cylindre,
-      'Axe OG': bilan.refraction?.oeilGauche?.axe,
-      'Addition OG': bilan.refraction?.oeilGauche?.addition,
-      'Motilité oculaire': bilan.motiliteOculaire,
-      'Vision binoculaire': bilan.visionBinoculaire,
-      'Champ visuel': bilan.champVisuel,
-      'Test couleur': bilan.testCouleur,
-      'Anomalies détectées': bilan.anomaliesDetectees?.join('; '),
-      Diagnostic: bilan.diagnostic,
-      Observations: bilan.observations,
-      Prescription: bilan.prescription,
-      Orientation: bilan.orientation,
-      Examinateur: bilan.examinateur
-    }));
-    
-    const parser = new Parser();
-    const csv = parser.parse(flattenedData);
-    
-    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
-    res.setHeader('Content-Disposition', `attachment; filename=bilans_visuels_${Date.now()}.csv`);
-    res.send('\ufeff' + csv); // BOM pour Excel UTF-8
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Erreur lors de l\'export CSV',
-      error: error.message
-    });
-  }
-});
-
-// Statistiques
-router.get('/stats/overview', async (req, res) => {
-  try {
-    const totalBilans = await BilanVisuel.countDocuments();
-    
-    const parSexe = await BilanVisuel.aggregate([
-      { $group: { _id: '$sexe', count: { $sum: 1 } } }
-    ]);
-    
-    const parAge = await BilanVisuel.aggregate([
-      {
-        $bucket: {
-          groupBy: '$age',
-          boundaries: [0, 18, 30, 45, 60, 100],
-          default: 'Autre',
-          output: { count: { $sum: 1 } }
-        }
-      }
-    ]);
-    
-    const anomaliesFrequentes = await BilanVisuel.aggregate([
-      { $unwind: '$anomaliesDetectees' },
-      { $group: { _id: '$anomaliesDetectees', count: { $sum: 1 } } },
-      { $sort: { count: -1 } },
-      { $limit: 10 }
-    ]);
-    
-    res.json({
-      success: true,
-      data: {
-        totalBilans,
-        parSexe,
-        parAge,
-        anomaliesFrequentes
-      }
-    });
-  } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: 'Erreur lors du calcul des statistiques',
       error: error.message
     });
   }

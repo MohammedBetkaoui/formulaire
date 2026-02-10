@@ -38,16 +38,57 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* ===== ARABIC TEXT ===== */
+.ar, .ar-label, .ar-inline {
+    font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+    direction: rtl;
+    unicode-bidi: isolate;
+}
+.ar-label {
+    display: block;
+    font-size: .7rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    margin-top: 2px;
+    letter-spacing: 0;
+    text-transform: none;
+}
+.ar-inline {
+    font-size: .78rem;
+    color: var(--accent-dark);
+    font-weight: 500;
+}
+.section-title-bi {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+.section-title-bi .ar {
+    font-size: .82rem;
+    font-weight: 500;
+    color: var(--accent-dark);
+    opacity: .85;
+}
+.section-hint {
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    margin: 12px 0 6px;
+    padding-left: 10px;
+    border-left: 3px solid var(--accent-light);
+    font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+}
+
 /* ===== ICON SIZES ===== */
 .icon-lg  { width: 36px; height: 36px; stroke-width: 2; }
 .icon-sm  { width: 18px; height: 18px; stroke-width: 2.2; }
-.icon-section { width: 22px; height: 22px; stroke-width: 2; vertical-align: -4px; color: var(--accent); }
+.icon-section { width: 22px; height: 22px; stroke-width: 2; vertical-align: -4px; color: var(--accent); flex-shrink: 0; }
 .icon-btn { width: 16px; height: 16px; stroke-width: 2.2; vertical-align: -2px; }
 .icon-filter { width: 18px; height: 18px; stroke-width: 2; color: var(--text-muted); position: absolute; left: 14px; top: 50%; transform: translateY(-50%); }
 
 /* ===== LAYOUT ===== */
 .container {
-    max-width: 960px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 24px 20px 60px;
 }
@@ -93,6 +134,7 @@ header h1 {
     font-size: .95rem;
     opacity: .85;
     font-weight: 400;
+    font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
 }
 
 /* ===== TABS ===== */
@@ -232,6 +274,73 @@ select[multiple] {
 textarea {
     resize: vertical;
     min-height: 70px;
+}
+
+/* ===== 3-COLUMN GRID ===== */
+.form-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+/* ===== READONLY INPUT ===== */
+.input-readonly {
+    background: var(--border) !important;
+    cursor: not-allowed;
+    color: var(--text-muted) !important;
+    font-style: italic;
+}
+
+/* ===== CORRECTION TOGGLE ===== */
+.correction-hidden {
+    display: none;
+}
+.correction-visible {
+    display: grid;
+    animation: fadeUp .3s ease;
+}
+
+/* ===== CHECKBOX GRID ===== */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 10px;
+    padding: 8px 0;
+}
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+    background: var(--bg);
+    font-size: .88rem;
+    font-weight: 500;
+}
+.checkbox-label:hover {
+    border-color: var(--accent);
+    background: #fff;
+}
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+.checkbox-label input[type="checkbox"]:checked + span {
+    color: var(--primary);
+}
+.checkbox-label input[type="checkbox"]:checked ~ span {
+    color: var(--primary);
+}
+
+/* ===== DIAGNOSTIC SECTION ===== */
+.section-diagnostic {
+    border-left: 4px solid var(--accent);
 }
 
 /* ===== BUTTONS ===== */
@@ -433,7 +542,7 @@ textarea {
     background: var(--bg-card);
     border-radius: var(--radius);
     width: 100%;
-    max-width: 640px;
+    max-width: 780px;
     max-height: 85vh;
     overflow-y: auto;
     box-shadow: var(--shadow-lg);
@@ -509,6 +618,22 @@ textarea {
     margin: 6px 0;
 }
 
+/* Modal section titles */
+.modal-section-title {
+    font-size: .88rem;
+    font-weight: 700;
+    color: var(--primary);
+    margin: 16px 0 10px;
+    padding: 6px 12px;
+    background: var(--bg);
+    border-radius: var(--radius-sm);
+    border-left: 3px solid var(--accent);
+    font-family: 'Inter', 'Noto Sans Arabic', sans-serif;
+}
+.modal-section-title:first-child {
+    margin-top: 0;
+}
+
 /* ===== NOTIFICATION ===== */
 .notification {
     position: fixed;
@@ -545,6 +670,8 @@ textarea {
     .header-icon { width: 52px; height: 52px; }
     .section { padding: 20px 16px; }
     .form-grid { grid-template-columns: 1fr; }
+    .form-grid-3 { grid-template-columns: 1fr; }
+    .checkbox-grid { grid-template-columns: 1fr; }
     .tabs { flex-direction: column; gap: 4px; }
     .tab-btn { justify-content: flex-start; padding: 12px 16px; }
     .toolbar { flex-direction: column; align-items: stretch; }

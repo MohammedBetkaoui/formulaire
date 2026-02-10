@@ -6,7 +6,7 @@
     <title>Institut BBA - Gestion des Bilans Visuels</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
@@ -15,7 +15,7 @@
         <header>
             <div class="header-icon"><i data-lucide="activity" class="icon-lg"></i></div>
             <h1>Institut BBA</h1>
-            <p class="header-sub">Gestion des Bilans Visuels</p>
+            <p class="header-sub">Gestion des Bilans Visuels — إدارة الفحوصات البصرية</p>
         </header>
 
         <div class="tabs">
@@ -32,260 +32,414 @@
         <!-- ONGLET: NOUVEAU BILAN -->
         <div id="nouveau" class="tab-content active">
             <form id="bilanForm">
+
+                <!-- ===== SECTION 1: IDENTIFICATION DU PATIENT ===== -->
                 <div class="section">
-                    <h3><i data-lucide="user" class="icon-section"></i> Informations du Patient</h3>
+                    <h3>
+                        <i data-lucide="user" class="icon-section"></i>
+                        <span class="section-title-bi">
+                            <span>1. Identification du Patient & Contexte</span>
+                            <span class="ar">تعريف المريض والسياق</span>
+                        </span>
+                    </h3>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="nom">Nom *</label>
+                            <label>
+                                ID Patient <span class="ar-label">رقم المريض</span>
+                            </label>
+                            <input type="text" id="idPatient" name="idPatient" placeholder="Auto-généré" readonly class="input-readonly">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Date de l'examen * <span class="ar-label">تاريخ الفحص</span>
+                            </label>
+                            <input type="date" id="dateExamen" name="dateExamen" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Nom * <span class="ar-label">اللقب</span>
+                            </label>
                             <input type="text" id="nom" name="nom" required>
                         </div>
                         <div class="form-group">
-                            <label for="prenom">Prénom *</label>
+                            <label>
+                                Prénom * <span class="ar-label">الاسم</span>
+                            </label>
                             <input type="text" id="prenom" name="prenom" required>
                         </div>
                         <div class="form-group">
-                            <label for="age">Âge *</label>
+                            <label>
+                                Sexe * <span class="ar-label">الجنس</span>
+                            </label>
+                            <select id="sexe" name="sexe" required>
+                                <option value="">-- Sélectionner --</option>
+                                <option value="Homme">Homme — رجل</option>
+                                <option value="Femme">Femme — امرأة</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Âge (années) * <span class="ar-label">العمر (سنوات)</span>
+                            </label>
                             <input type="number" id="age" name="age" min="0" max="120" required>
                         </div>
                         <div class="form-group">
-                            <label for="sexe">Sexe *</label>
-                            <select id="sexe" name="sexe" required>
+                            <label>
+                                Profession <span class="ar-label">المهنة</span>
+                            </label>
+                            <input type="text" id="profession" name="profession" placeholder="Ex: Travail sur écran, étudiant...">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                Motif de consultation * <span class="ar-label">سبب الاستشارة</span>
+                            </label>
+                            <select id="motifConsultation" name="motifConsultation" required>
                                 <option value="">-- Sélectionner --</option>
-                                <option value="Masculin">Masculin</option>
-                                <option value="Féminin">Féminin</option>
+                                <option value="Contrôle de routine">Contrôle de routine — فحص روتيني</option>
+                                <option value="Baisse d'acuité">Baisse d'acuité — انخفاض حدة البصر</option>
+                                <option value="Céphalées">Céphalées — صداع</option>
+                                <option value="Vision floue de près">Vision floue de près — رؤية ضبابية عن قرب</option>
+                                <option value="Traumatisme">Traumatisme — إصابة</option>
+                                <option value="Fatigue visuelle">Fatigue visuelle — إرهاق بصري</option>
+                                <option value="Renouvellement de lunettes">Renouvellement de lunettes — تجديد النظارات</option>
+                                <option value="Douleur oculaire">Douleur oculaire — ألم في العين</option>
+                                <option value="Autre">Autre — أخرى</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label for="dateNaissance">Date de naissance</label>
-                            <input type="date" id="dateNaissance" name="dateNaissance">
-                        </div>
-                        <div class="form-group">
-                            <label for="telephone">Téléphone</label>
-                            <input type="tel" id="telephone" name="telephone">
-                        </div>
                     </div>
                 </div>
 
+                <!-- ===== SECTION 2: ANAMNÈSE ===== -->
                 <div class="section">
-                    <h3><i data-lucide="stethoscope" class="icon-section"></i> Motif de Consultation</h3>
+                    <h3>
+                        <i data-lucide="clipboard-list" class="icon-section"></i>
+                        <span class="section-title-bi">
+                            <span>2. Anamnèse (Antécédents)</span>
+                            <span class="ar">السوابق المرضية</span>
+                        </span>
+                    </h3>
                     <div class="form-group">
-                        <label for="motifConsultation">Motif *</label>
-                        <select id="motifConsultation" name="motifConsultation" required>
-                            <option value="">-- Sélectionner --</option>
-                            <option value="Contrôle de routine">Contrôle de routine</option>
-                            <option value="Baisse d'acuité visuelle">Baisse d'acuité visuelle</option>
-                            <option value="Douleur oculaire">Douleur oculaire</option>
-                            <option value="Céphalées">Céphalées</option>
-                            <option value="Fatigue visuelle">Fatigue visuelle</option>
-                            <option value="Renouvellement de lunettes">Renouvellement de lunettes</option>
-                            <option value="Autre">Autre</option>
-                        </select>
+                        <label>
+                            Antécédents Oculaires <span class="ar-label">السوابق العينية (جراحة، عدسات لاصقة، زرق...)</span>
+                        </label>
+                        <textarea id="antecedentsOculaires" name="antecedentsOculaires" rows="3" placeholder="Chirurgie, Port de lentilles, Glaucome, etc."></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="antecedentsMedicaux">Antécédents médicaux</label>
-                        <textarea id="antecedentsMedicaux" name="antecedentsMedicaux" rows="3"></textarea>
+                        <label>
+                            Antécédents Systémiques <span class="ar-label">السوابق العامة (سكري، ضغط الدم، حساسية)</span>
+                        </label>
+                        <textarea id="antecedentsSystemiques" name="antecedentsSystemiques" rows="3" placeholder="Diabète, Hypertension, Allergies, etc."></textarea>
                     </div>
-                    <div class="form-group">
-                        <label for="antecedentsOphtalmologiques">Antécédents ophtalmologiques</label>
-                        <textarea id="antecedentsOphtalmologiques" name="antecedentsOphtalmologiques" rows="3"></textarea>
-                    </div>
-                </div>
-
-                <div class="section">
-                    <h3><i data-lucide="eye" class="icon-section"></i> Acuité Visuelle</h3>
-                    
-                    <h4>Œil Droit (OD)</h4>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="avOdLoinSc">Loin sans correction</label>
-                            <input type="text" id="avOdLoinSc" name="avOdLoinSc" placeholder="Ex: 10/10">
-                        </div>
-                        <div class="form-group">
-                            <label for="avOdLoinAc">Loin avec correction</label>
-                            <input type="text" id="avOdLoinAc" name="avOdLoinAc" placeholder="Ex: 10/10">
-                        </div>
-                        <div class="form-group">
-                            <label for="avOdPresSc">Près sans correction</label>
-                            <input type="text" id="avOdPresSc" name="avOdPresSc" placeholder="Ex: P3">
-                        </div>
-                        <div class="form-group">
-                            <label for="avOdPresAc">Près avec correction</label>
-                            <input type="text" id="avOdPresAc" name="avOdPresAc" placeholder="Ex: P2">
+                            <label>
+                                Correction actuelle <span class="ar-label">هل يوجد تصحيح حالي؟</span>
+                            </label>
+                            <select id="correctionActuelle" name="correctionActuelle" onchange="toggleCorrectionFields()">
+                                <option value="Non">Non — لا</option>
+                                <option value="Oui">Oui — نعم</option>
+                            </select>
                         </div>
                     </div>
-
-                    <h4>Œil Gauche (OG)</h4>
-                    <div class="form-grid">
+                    <div id="correctionDetails" class="form-grid correction-hidden">
                         <div class="form-group">
-                            <label for="avOgLoinSc">Loin sans correction</label>
-                            <input type="text" id="avOgLoinSc" name="avOgLoinSc" placeholder="Ex: 10/10">
+                            <label>
+                                Puissance verres actuels OD <span class="ar-label">قوة العدسة الحالية – عين يمنى</span>
+                            </label>
+                            <input type="text" id="puissanceOd" name="puissanceOd" placeholder="Ex: -2.00 (-0.50) 90°">
                         </div>
                         <div class="form-group">
-                            <label for="avOgLoinAc">Loin avec correction</label>
-                            <input type="text" id="avOgLoinAc" name="avOgLoinAc" placeholder="Ex: 10/10">
-                        </div>
-                        <div class="form-group">
-                            <label for="avOgPresSc">Près sans correction</label>
-                            <input type="text" id="avOgPresSc" name="avOgPresSc" placeholder="Ex: P3">
-                        </div>
-                        <div class="form-group">
-                            <label for="avOgPresAc">Près avec correction</label>
-                            <input type="text" id="avOgPresAc" name="avOgPresAc" placeholder="Ex: P2">
-                        </div>
-                    </div>
-
-                    <h4>Vision Binoculaire</h4>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label for="avBinoLoin">Loin binoculaire</label>
-                            <input type="text" id="avBinoLoin" name="avBinoLoin">
-                        </div>
-                        <div class="form-group">
-                            <label for="avBinoPres">Près binoculaire</label>
-                            <input type="text" id="avBinoPres" name="avBinoPres">
+                            <label>
+                                Puissance verres actuels OG <span class="ar-label">قوة العدسة الحالية – عين يسرى</span>
+                            </label>
+                            <input type="text" id="puissanceOg" name="puissanceOg" placeholder="Ex: -2.25 (-0.75) 85°">
                         </div>
                     </div>
                 </div>
 
+                <!-- ===== SECTION 3: PRÉ-TESTS & SANTÉ OCULAIRE ===== -->
                 <div class="section">
-                    <h3><i data-lucide="scan-eye" class="icon-section"></i> Réfraction</h3>
-                    
-                    <h4>Œil Droit (OD)</h4>
-                    <div class="form-grid">
+                    <h3>
+                        <i data-lucide="eye" class="icon-section"></i>
+                        <span class="section-title-bi">
+                            <span>3. Pré-tests & Santé Oculaire</span>
+                            <span class="ar">الفحوصات الأولية وصحة العين</span>
+                        </span>
+                    </h3>
+
+                    <h4>Acuité Visuelle Sans Correction (AVSC) — حدة البصر بدون تصحيح</h4>
+                    <div class="form-grid form-grid-3">
                         <div class="form-group">
-                            <label for="refOdSphere">Sphère</label>
-                            <input type="number" id="refOdSphere" name="refOdSphere" step="0.25" placeholder="Ex: -2.00">
+                            <label>OD <span class="ar-label">عين يمنى</span></label>
+                            <input type="text" id="avscOd" name="avscOd" placeholder="Ex: 5/10">
                         </div>
                         <div class="form-group">
-                            <label for="refOdCylindre">Cylindre</label>
-                            <input type="number" id="refOdCylindre" name="refOdCylindre" step="0.25" placeholder="Ex: -1.00">
+                            <label>OG <span class="ar-label">عين يسرى</span></label>
+                            <input type="text" id="avscOg" name="avscOg" placeholder="Ex: 4/10">
                         </div>
                         <div class="form-group">
-                            <label for="refOdAxe">Axe (°)</label>
-                            <input type="number" id="refOdAxe" name="refOdAxe" min="0" max="180" placeholder="Ex: 90">
-                        </div>
-                        <div class="form-group">
-                            <label for="refOdAddition">Addition</label>
-                            <input type="number" id="refOdAddition" name="refOdAddition" step="0.25" placeholder="Ex: 2.00">
+                            <label>BIN <span class="ar-label">العينين معاً</span></label>
+                            <input type="text" id="avscBin" name="avscBin" placeholder="Ex: 6/10">
                         </div>
                     </div>
 
-                    <h4>Œil Gauche (OG)</h4>
-                    <div class="form-grid">
+                    <h4>Acuité Visuelle Avec Correction (AVCC) — حدة البصر مع التصحيح</h4>
+                    <div class="form-grid form-grid-3">
                         <div class="form-group">
-                            <label for="refOgSphere">Sphère</label>
-                            <input type="number" id="refOgSphere" name="refOgSphere" step="0.25" placeholder="Ex: -2.00">
+                            <label>OD <span class="ar-label">عين يمنى</span></label>
+                            <input type="text" id="avccOd" name="avccOd" placeholder="Ex: 10/10">
                         </div>
                         <div class="form-group">
-                            <label for="refOgCylindre">Cylindre</label>
-                            <input type="number" id="refOgCylindre" name="refOgCylindre" step="0.25" placeholder="Ex: -1.00">
+                            <label>OG <span class="ar-label">عين يسرى</span></label>
+                            <input type="text" id="avccOg" name="avccOg" placeholder="Ex: 10/10">
                         </div>
                         <div class="form-group">
-                            <label for="refOgAxe">Axe (°)</label>
-                            <input type="number" id="refOgAxe" name="refOgAxe" min="0" max="180" placeholder="Ex: 90">
-                        </div>
-                        <div class="form-group">
-                            <label for="refOgAddition">Addition</label>
-                            <input type="number" id="refOgAddition" name="refOgAddition" step="0.25" placeholder="Ex: 2.00">
+                            <label>BIN <span class="ar-label">العينين معاً</span></label>
+                            <input type="text" id="avccBin" name="avccBin" placeholder="Ex: 10/10">
                         </div>
                     </div>
-                </div>
 
-                <div class="section">
-                    <h3><i data-lucide="test-tubes" class="icon-section"></i> Tests Complémentaires</h3>
+                    <h4>Pression Intraoculaire (PIO) — ضغط العين الداخلي</h4>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="motiliteOculaire">Motilité oculaire</label>
+                            <label>OD (mmHg) <span class="ar-label">عين يمنى</span></label>
+                            <input type="number" id="pioOd" name="pioOd" step="0.1" placeholder="Ex: 15">
+                        </div>
+                        <div class="form-group">
+                            <label>OG (mmHg) <span class="ar-label">عين يسرى</span></label>
+                            <input type="number" id="pioOg" name="pioOg" step="0.1" placeholder="Ex: 16">
+                        </div>
+                    </div>
+
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>
+                                Motilité Oculaire <span class="ar-label">حركة العين</span>
+                            </label>
                             <select id="motiliteOculaire" name="motiliteOculaire">
-                                <option value="Non testé">Non testé</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Anormal">Anormal</option>
+                                <option value="">-- Sélectionner --</option>
+                                <option value="Normale">Normale — طبيعية</option>
+                                <option value="Restreinte">Restreinte — محدودة</option>
+                                <option value="Douleur">Douleur — ألم</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="visionBinoculaire">Vision binoculaire</label>
-                            <select id="visionBinoculaire" name="visionBinoculaire">
-                                <option value="Non testé">Non testé</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Anormal">Anormal</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="champVisuel">Champ visuel</label>
-                            <select id="champVisuel" name="champVisuel">
-                                <option value="Non testé">Non testé</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Anormal">Anormal</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="testCouleur">Test de couleur</label>
-                            <select id="testCouleur" name="testCouleur">
-                                <option value="Non testé">Non testé</option>
-                                <option value="Normal">Normal</option>
-                                <option value="Anormal">Anormal</option>
-                            </select>
+                            <label>
+                                Test d'Ishihara <span class="ar-label">اختبار إيشيهارا (عمى الألوان)</span>
+                            </label>
+                            <input type="text" id="testIshihara" name="testIshihara" placeholder="Ex: 38/38 Normal ou Anomalie">
                         </div>
                     </div>
                 </div>
 
+                <!-- ===== SECTION 4: RÉFRACTION ===== -->
                 <div class="section">
-                    <h3><i data-lucide="clipboard-check" class="icon-section"></i> Diagnostic et Observations</h3>
-                    <div class="form-group">
-                        <label for="anomaliesDetectees">Anomalies détectées</label>
-                        <select id="anomaliesDetectees" name="anomaliesDetectees" multiple size="6">
-                            <option value="Myopie">Myopie</option>
-                            <option value="Hypermétropie">Hypermétropie</option>
-                            <option value="Astigmatisme">Astigmatisme</option>
-                            <option value="Presbytie">Presbytie</option>
-                            <option value="Strabisme">Strabisme</option>
-                            <option value="Amblyopie">Amblyopie</option>
-                            <option value="Daltonisme">Daltonisme</option>
-                            <option value="Autre">Autre</option>
-                        </select>
-                        <small>Maintenez Ctrl/Cmd pour sélectionner plusieurs options</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="diagnostic">Diagnostic</label>
-                        <textarea id="diagnostic" name="diagnostic" rows="3"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="observations">Observations</label>
-                        <textarea id="observations" name="observations" rows="3"></textarea>
-                    </div>
-                </div>
+                    <h3>
+                        <i data-lucide="scan-eye" class="icon-section"></i>
+                        <span class="section-title-bi">
+                            <span>4. Réfraction</span>
+                            <span class="ar">قياس انكسار الضوء (قلب الفحص)</span>
+                        </span>
+                    </h3>
 
-                <div class="section">
-                    <h3><i data-lucide="pill" class="icon-section"></i> Traitement et Suivi</h3>
-                    <div class="form-group">
-                        <label for="prescription">Prescription</label>
-                        <textarea id="prescription" name="prescription" rows="3" placeholder="Ordonnance de lunettes, lentilles, etc."></textarea>
+                    <h4>Réfraction Objective (Auto-réf) — الانكسار الموضوعي (أوتو ريف)</h4>
+                    <p class="section-hint">OD — عين يمنى</p>
+                    <div class="form-grid form-grid-3">
+                        <div class="form-group">
+                            <label>Sphère <span class="ar-label">كرة</span></label>
+                            <input type="number" id="refObjOdSphere" name="refObjOdSphere" step="0.25" placeholder="Ex: -2.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Cylindre <span class="ar-label">أسطوانة</span></label>
+                            <input type="number" id="refObjOdCylindre" name="refObjOdCylindre" step="0.25" placeholder="Ex: -0.50">
+                        </div>
+                        <div class="form-group">
+                            <label>Axe (°) <span class="ar-label">محور</span></label>
+                            <input type="number" id="refObjOdAxe" name="refObjOdAxe" min="0" max="180" placeholder="Ex: 90">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="orientation">Orientation</label>
-                        <textarea id="orientation" name="orientation" rows="2" placeholder="Consultation ophtalmologique, suivi, etc."></textarea>
+                    <p class="section-hint">OG — عين يسرى</p>
+                    <div class="form-grid form-grid-3">
+                        <div class="form-group">
+                            <label>Sphère <span class="ar-label">كرة</span></label>
+                            <input type="number" id="refObjOgSphere" name="refObjOgSphere" step="0.25" placeholder="Ex: -2.25">
+                        </div>
+                        <div class="form-group">
+                            <label>Cylindre <span class="ar-label">أسطوانة</span></label>
+                            <input type="number" id="refObjOgCylindre" name="refObjOgCylindre" step="0.25" placeholder="Ex: -0.75">
+                        </div>
+                        <div class="form-group">
+                            <label>Axe (°) <span class="ar-label">محور</span></label>
+                            <input type="number" id="refObjOgAxe" name="refObjOgAxe" min="0" max="180" placeholder="Ex: 85">
+                        </div>
                     </div>
-                </div>
 
-                <div class="section">
-                    <h3><i data-lucide="calendar" class="icon-section"></i> Informations Administratives</h3>
+                    <h4>Réfraction Subjective (Meilleure correction) — الانكسار الذاتي (أفضل تصحيح)</h4>
+                    <p class="section-hint">OD — عين يمنى</p>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label for="dateExamen">Date de l'examen</label>
-                            <input type="date" id="dateExamen" name="dateExamen">
+                            <label>Sphère <span class="ar-label">كرة</span></label>
+                            <input type="number" id="refSubOdSphere" name="refSubOdSphere" step="0.25" placeholder="Ex: -2.00">
                         </div>
                         <div class="form-group">
-                            <label for="examinateur">Examinateur</label>
-                            <input type="text" id="examinateur" name="examinateur" placeholder="Nom de l'optométriste">
+                            <label>Cylindre <span class="ar-label">أسطوانة</span></label>
+                            <input type="number" id="refSubOdCylindre" name="refSubOdCylindre" step="0.25" placeholder="Ex: -0.50">
                         </div>
+                        <div class="form-group">
+                            <label>Axe (°) <span class="ar-label">محور</span></label>
+                            <input type="number" id="refSubOdAxe" name="refSubOdAxe" min="0" max="180" placeholder="Ex: 90">
+                        </div>
+                        <div class="form-group">
+                            <label>Acuité finale OD <span class="ar-label">حدة بصر نهائية</span></label>
+                            <input type="text" id="refSubOdAcuite" name="refSubOdAcuite" placeholder="Ex: 10/10">
+                        </div>
+                    </div>
+                    <p class="section-hint">OG — عين يسرى</p>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Sphère <span class="ar-label">كرة</span></label>
+                            <input type="number" id="refSubOgSphere" name="refSubOgSphere" step="0.25" placeholder="Ex: -2.25">
+                        </div>
+                        <div class="form-group">
+                            <label>Cylindre <span class="ar-label">أسطوانة</span></label>
+                            <input type="number" id="refSubOgCylindre" name="refSubOgCylindre" step="0.25" placeholder="Ex: -0.75">
+                        </div>
+                        <div class="form-group">
+                            <label>Axe (°) <span class="ar-label">محور</span></label>
+                            <input type="number" id="refSubOgAxe" name="refSubOgAxe" min="0" max="180" placeholder="Ex: 85">
+                        </div>
+                        <div class="form-group">
+                            <label>Acuité finale OG <span class="ar-label">حدة بصر نهائية</span></label>
+                            <input type="text" id="refSubOgAcuite" name="refSubOgAcuite" placeholder="Ex: 10/10">
+                        </div>
+                    </div>
+
+                    <h4>Vision de Près (Presbytie) — الرؤية القريبة (قصر النظر الشيخوخي)</h4>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>Addition <span class="ar-label">إضافة</span></label>
+                            <input type="number" id="visionPresAddition" name="visionPresAddition" step="0.25" placeholder="Ex: 2.00">
+                        </div>
+                        <div class="form-group">
+                            <label>Parinaud <span class="ar-label">بارينو</span></label>
+                            <select id="visionPresParinaud" name="visionPresParinaud">
+                                <option value="">-- Sélectionner --</option>
+                                <option value="P1.5">P1.5</option>
+                                <option value="P2">P2</option>
+                                <option value="P3">P3</option>
+                                <option value="P4">P4</option>
+                                <option value="P5">P5</option>
+                                <option value="P6">P6</option>
+                                <option value="P8">P8</option>
+                                <option value="P10">P10</option>
+                                <option value="P14">P14</option>
+                                <option value="P20">P20</option>
+                                <option value="P28">P28</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== SECTION 5: VISION BINOCULAIRE & SANTÉ DU SEGMENT ===== -->
+                <div class="section">
+                    <h3>
+                        <i data-lucide="glasses" class="icon-section"></i>
+                        <span class="section-title-bi">
+                            <span>5. Vision Binoculaire & Santé du Segment</span>
+                            <span class="ar">الرؤية المزدوجة وصحة القطاع الأمامي</span>
+                        </span>
+                    </h3>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label>
+                                Stéréopsie (Lang/Wirt) <span class="ar-label">الرؤية المجسمة (ثواني قوسية)</span>
+                            </label>
+                            <input type="text" id="stereopsie" name="stereopsie" placeholder="Ex: 60 sec d'arc">
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                PPC (Point Proximum de Convergence) <span class="ar-label">نقطة التقارب القريبة (سم)</span>
+                            </label>
+                            <input type="text" id="ppc" name="ppc" placeholder="Ex: 8 cm">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Examen Lampe à Fente <span class="ar-label">فحص المصباح الشقي (القرنية، العدسة، الملتحمة)</span>
+                        </label>
+                        <textarea id="examenLampeAFente" name="examenLampeAFente" rows="3" placeholder="Cornée, Cristallin, Conjonctive — القرنية، العدسة البلورية، الملتحمة"></textarea>
+                    </div>
+                </div>
+
+                <!-- ===== SECTION 6: DIAGNOSTIC ET DÉCISION ===== -->
+                <div class="section section-diagnostic">
+                    <h3>
+                        <i data-lucide="clipboard-check" class="icon-section"></i>
+                        <span class="section-title-bi">
+                            <span>6. Diagnostic et Décision (Classification BBA)</span>
+                            <span class="ar">التشخيص والقرار (تصنيف BBA)</span>
+                        </span>
+                    </h3>
+                    <div class="form-group">
+                        <label>
+                            Type d'anomalie détectée <span class="ar-label">نوع الخلل المكتشف</span>
+                        </label>
+                        <div class="checkbox-grid">
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Myopie">
+                                <span>Myopie <span class="ar-inline">قصر النظر</span></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Hypermétropie">
+                                <span>Hypermétropie <span class="ar-inline">طول النظر</span></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Astigmatisme">
+                                <span>Astigmatisme <span class="ar-inline">اللابؤرية</span></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Presbytie">
+                                <span>Presbytie <span class="ar-inline">قصر النظر الشيخوخي</span></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Amblyopie">
+                                <span>Amblyopie <span class="ar-inline">كسل العين</span></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Pathologie suspectée">
+                                <span>Pathologie suspectée <span class="ar-inline">اشتباه مرضي</span></span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" name="typeAnomalie" value="Emmétrope">
+                                <span>Emmétrope <span class="ar-inline">بصر طبيعي</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Action entreprise <span class="ar-label">الإجراء المتخذ</span>
+                        </label>
+                        <select id="actionEntreprise" name="actionEntreprise">
+                            <option value="">-- Sélectionner --</option>
+                            <option value="Prescription de lunettes">Prescription de lunettes — وصف نظارات</option>
+                            <option value="Rééducation orthoptique">Rééducation orthoptique — إعادة تأهيل حركة العين</option>
+                            <option value="Orientation vers ophtalmologiste">Orientation vers ophtalmologiste — تحويل لطبيب العيون</option>
+                            <option value="Simple surveillance">Simple surveillance — مراقبة بسيطة</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            Note libre / Observations <span class="ar-label">ملاحظات حرة</span>
+                        </label>
+                        <textarea id="noteLibre" name="noteLibre" rows="4" placeholder="Observations complémentaires... — ملاحظات إضافية..."></textarea>
                     </div>
                 </div>
 
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">
-                        <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan
+                        <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan — حفظ الفحص
                     </button>
-                    <button type="reset" class="btn btn-secondary">
+                    <button type="reset" class="btn btn-secondary" onclick="resetForm()">
                         <i data-lucide="rotate-ccw" class="icon-btn"></i> Réinitialiser
                     </button>
                 </div>
@@ -296,7 +450,7 @@
         <div id="liste" class="tab-content">
             <div class="section">
                 <div class="toolbar">
-                    <h3><i data-lucide="folder-open" class="icon-section"></i> Liste des Bilans</h3>
+                    <h3><i data-lucide="folder-open" class="icon-section"></i> Liste des Bilans — قائمة الفحوصات</h3>
                     <div class="toolbar-actions">
                         <button onclick="loadBilans()" class="btn btn-secondary">
                             <i data-lucide="refresh-cw" class="icon-btn"></i> Actualiser
@@ -314,8 +468,8 @@
                     </div>
                     <select id="filterSexe" onchange="filterBilans()">
                         <option value="">Tous les sexes</option>
-                        <option value="Masculin">Masculin</option>
-                        <option value="Féminin">Féminin</option>
+                        <option value="Homme">Homme</option>
+                        <option value="Femme">Femme</option>
                     </select>
                     <input type="date" id="filterDateDebut" onchange="filterBilans()">
                     <input type="date" id="filterDateFin" onchange="filterBilans()">
@@ -332,7 +486,7 @@
     <div id="bilanModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
-                <h3><i data-lucide="file-text" class="icon-section"></i> Détails du Bilan</h3>
+                <h3><i data-lucide="file-text" class="icon-section"></i> Détails du Bilan — تفاصيل الفحص</h3>
                 <button class="modal-close" onclick="document.getElementById('bilanModal').classList.remove('show')">
                     <i data-lucide="x" class="icon-btn"></i>
                 </button>
