@@ -5,6 +5,8 @@ const API_URL = window.location.hostname === 'localhost'
 
 // État de l'application
 let bilans = [];
+let currentStep = 1;
+const totalSteps = 6;
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
@@ -17,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Charger les bilans au démarrage
     loadBilans();
+    
+    // Initialiser le wizard
+    goToStep(1);
 });
 
 // Gestion des onglets
@@ -48,12 +53,73 @@ function toggleCorrectionFields() {
     }
 }
 
+// ===== STEP WIZARD NAVIGATION =====
+function goToStep(step) {
+    if (step < 1 || step > totalSteps) return;
+    currentStep = step;
+
+    // Show/hide sections
+    document.querySelectorAll('.step-section').forEach(sec => sec.classList.remove('active'));
+    const target = document.querySelector(`.step-section[data-step="${step}"]`);
+    if (target) target.classList.add('active');
+
+    // Update stepper indicators
+    document.querySelectorAll('.stepper-step').forEach(s => {
+        const t = parseInt(s.getAttribute('data-target'));
+        s.classList.remove('active', 'completed');
+        if (t === step) s.classList.add('active');
+        else if (t < step) s.classList.add('completed');
+    });
+
+    // Update stepper lines
+    document.querySelectorAll('.stepper-line').forEach((line, idx) => {
+        if (idx < step - 1) line.classList.add('completed');
+        else line.classList.remove('completed');
+    });
+
+    // Scroll to top of form
+    const form = document.getElementById('bilanForm');
+    if (form) form.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // Re-render icons for new step
+    lucide.createIcons();
+}
+
+function nextStep() {
+    // Validate required fields in current step before moving
+    const currentSection = document.querySelector(`.step-section[data-step="${currentStep}"]`);
+    if (currentSection) {
+        const requiredFields = currentSection.querySelectorAll('[required]');
+        let valid = true;
+        requiredFields.forEach(field => {
+            if (!field.value || field.value.trim() === '') {
+                field.classList.add('field-error');
+                valid = false;
+            } else {
+                field.classList.remove('field-error');
+            }
+        });
+        if (!valid) {
+            showNotification('Veuillez remplir les champs obligatoires (*) — يرجى ملء الحقول الإلزامية', 'error');
+            return;
+        }
+    }
+    if (currentStep < totalSteps) goToStep(currentStep + 1);
+}
+
+function prevStep() {
+    if (currentStep > 1) goToStep(currentStep - 1);
+}
+
 // Reset form
 function resetForm() {
     document.getElementById('bilanForm').reset();
     const today = new Date().toISOString().split('T')[0];
     document.getElementById('dateExamen').value = today;
     toggleCorrectionFields();
+    // Remove field error highlights
+    document.querySelectorAll('.field-error').forEach(f => f.classList.remove('field-error'));
+    goToStep(1);
 }
 
 // Helper: get float or undefined
@@ -166,6 +232,8 @@ async function saveBilan(e) {
             e.target.reset();
             document.getElementById('dateExamen').value = new Date().toISOString().split('T')[0];
             toggleCorrectionFields();
+            document.querySelectorAll('.field-error').forEach(f => f.classList.remove('field-error'));
+            goToStep(1);
             loadBilans();
         } else {
             showNotification('Erreur: ' + result.message, 'error');
@@ -478,31 +546,56 @@ async function deleteBilan(id) {
     }
 }
 
-// Exporter en CSV
+// Exporter en CSV (passe les filtres actifs de la liste)
 async function exportCSV() {
     try {
-        showNotification('Téléchargement en cours...', 'info');
+        showNotification('Préparation de l\'export...', 'info');
+
+        // Collect active filters from the list view
+        const params = new URLSearchParams();
+        const searchNom = document.getElementById('searchNom')?.value?.trim();
+        const filterSexe = document.getElementById('filterSexe')?.value;
+        const filterDateDebut = document.getElementById('filterDateDebut')?.value;
+        const filterDateFin = document.getElementById('filterDateFin')?.value;
+
+        if (searchNom) params.set('nom', searchNom);
+        if (filterSexe) params.set('sexe', filterSexe);
+        if (filterDateDebut) params.set('dateDebut', filterDateDebut);
+        if (filterDateFin) params.set('dateFin', filterDateFin);
+
+        const queryStr = params.toString();
+        const url = `${API_URL}/export/csv${queryStr ? '?' + queryStr : ''}`;
         
-        const response = await fetch(`${API_URL}/export/csv`);
+        const response = await fetch(url);
         
         if (!response.ok) {
-            throw new Error('Erreur lors de l\'export');
+            const err = await response.json().catch(() => null);
+            throw new Error(err?.message || 'Erreur lors de l\'export');
         }
         
+        // Extract filename from Content-Disposition header if available
+        const disposition = response.headers.get('Content-Disposition');
+        let filename = 'bilans_BBA.csv';
+        if (disposition) {
+            const match = disposition.match(/filename="?([^"]+)"?/);
+            if (match) filename = match[1];
+        }
+
         const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
+        const blobUrl = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
-        a.href = url;
-        a.download = `bilans_visuels_${Date.now()}.csv`;
+        a.href = blobUrl;
+        a.download = filename;
         document.body.appendChild(a);
         a.click();
-        window.URL.revokeObjectURL(url);
+        window.URL.revokeObjectURL(blobUrl);
         document.body.removeChild(a);
         
-        showNotification('Export CSV réussi !', 'success');
+        const count = bilans.length;
+        showNotification(`Export CSV réussi ! (${count} bilan${count > 1 ? 's' : ''}) — تم التصدير بنجاح`, 'success');
     } catch (error) {
-        showNotification('Erreur lors de l\'export', 'error');
-        console.error('Erreur:', error);
+        showNotification(error.message || 'Erreur lors de l\'export', 'error');
+        console.error('Erreur export:', error);
     }
 }
 

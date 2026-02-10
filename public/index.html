@@ -33,8 +33,47 @@
         <div id="nouveau" class="tab-content active">
             <form id="bilanForm">
 
+                <!-- REQUIRED FIELDS NOTICE -->
+                <div class="required-notice">
+                    <i data-lucide="info" class="icon-btn"></i>
+                    <span>Les champs marqués d'un <strong>*</strong> sont obligatoires — <span class="ar-inline">الحقول المعلمة بـ <strong>*</strong> إلزامية</span></span>
+                </div>
+
+                <!-- STEPPER PROGRESS BAR -->
+                <div class="stepper">
+                    <div class="stepper-step active" data-target="1">
+                        <div class="stepper-circle">1</div>
+                        <span class="stepper-label">Identification</span>
+                    </div>
+                    <div class="stepper-line"></div>
+                    <div class="stepper-step" data-target="2">
+                        <div class="stepper-circle">2</div>
+                        <span class="stepper-label">Anamnèse</span>
+                    </div>
+                    <div class="stepper-line"></div>
+                    <div class="stepper-step" data-target="3">
+                        <div class="stepper-circle">3</div>
+                        <span class="stepper-label">Pré-tests</span>
+                    </div>
+                    <div class="stepper-line"></div>
+                    <div class="stepper-step" data-target="4">
+                        <div class="stepper-circle">4</div>
+                        <span class="stepper-label">Réfraction</span>
+                    </div>
+                    <div class="stepper-line"></div>
+                    <div class="stepper-step" data-target="5">
+                        <div class="stepper-circle">5</div>
+                        <span class="stepper-label">Vision Bino.</span>
+                    </div>
+                    <div class="stepper-line"></div>
+                    <div class="stepper-step" data-target="6">
+                        <div class="stepper-circle">6</div>
+                        <span class="stepper-label">Diagnostic</span>
+                    </div>
+                </div>
+
                 <!-- ===== SECTION 1: IDENTIFICATION DU PATIENT ===== -->
-                <div class="section">
+                <div class="section step-section active" data-step="1">
                     <h3>
                         <i data-lucide="user" class="icon-section"></i>
                         <span class="section-title-bi">
@@ -107,10 +146,17 @@
                             </select>
                         </div>
                     </div>
+                    <!-- Step 1 Navigation -->
+                    <div class="step-nav">
+                        <div></div>
+                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
+                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- ===== SECTION 2: ANAMNÈSE ===== -->
-                <div class="section">
+                <div class="section step-section" data-step="2">
                     <h3>
                         <i data-lucide="clipboard-list" class="icon-section"></i>
                         <span class="section-title-bi">
@@ -155,10 +201,19 @@
                             <input type="text" id="puissanceOg" name="puissanceOg" placeholder="Ex: -2.25 (-0.75) 85°">
                         </div>
                     </div>
+                    <!-- Step 2 Navigation -->
+                    <div class="step-nav">
+                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
+                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
+                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- ===== SECTION 3: PRÉ-TESTS & SANTÉ OCULAIRE ===== -->
-                <div class="section">
+                <div class="section step-section" data-step="3">
                     <h3>
                         <i data-lucide="eye" class="icon-section"></i>
                         <span class="section-title-bi">
@@ -230,10 +285,19 @@
                             <input type="text" id="testIshihara" name="testIshihara" placeholder="Ex: 38/38 Normal ou Anomalie">
                         </div>
                     </div>
+                    <!-- Step 3 Navigation -->
+                    <div class="step-nav">
+                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
+                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
+                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- ===== SECTION 4: RÉFRACTION ===== -->
-                <div class="section">
+                <div class="section step-section" data-step="4">
                     <h3>
                         <i data-lucide="scan-eye" class="icon-section"></i>
                         <span class="section-title-bi">
@@ -338,10 +402,19 @@
                             </select>
                         </div>
                     </div>
+                    <!-- Step 4 Navigation -->
+                    <div class="step-nav">
+                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
+                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
+                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- ===== SECTION 5: VISION BINOCULAIRE & SANTÉ DU SEGMENT ===== -->
-                <div class="section">
+                <div class="section step-section" data-step="5">
                     <h3>
                         <i data-lucide="glasses" class="icon-section"></i>
                         <span class="section-title-bi">
@@ -369,10 +442,19 @@
                         </label>
                         <textarea id="examenLampeAFente" name="examenLampeAFente" rows="3" placeholder="Cornée, Cristallin, Conjonctive — القرنية، العدسة البلورية، الملتحمة"></textarea>
                     </div>
+                    <!-- Step 5 Navigation -->
+                    <div class="step-nav">
+                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
+                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
+                        </button>
+                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
+                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- ===== SECTION 6: DIAGNOSTIC ET DÉCISION ===== -->
-                <div class="section section-diagnostic">
+                <div class="section section-diagnostic step-section" data-step="6">
                     <h3>
                         <i data-lucide="clipboard-check" class="icon-section"></i>
                         <span class="section-title-bi">
@@ -435,14 +517,20 @@
                     </div>
                 </div>
 
-                <div class="form-actions">
-                    <button type="submit" class="btn btn-primary">
-                        <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan — حفظ الفحص
-                    </button>
-                    <button type="reset" class="btn btn-secondary" onclick="resetForm()">
-                        <i data-lucide="rotate-ccw" class="icon-btn"></i> Réinitialiser
-                    </button>
-                </div>
+                    <!-- Step 6 Navigation -->
+                    <div class="step-nav">
+                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
+                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
+                        </button>
+                        <div class="step-nav-right">
+                            <button type="reset" class="btn btn-secondary" onclick="resetForm()">
+                                <i data-lucide="rotate-ccw" class="icon-btn"></i> Réinitialiser
+                            </button>
+                            <button type="submit" class="btn btn-primary">
+                                <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan — حفظ الفحص
+                            </button>
+                        </div>
+                    </div>
             </form>
         </div>
 
