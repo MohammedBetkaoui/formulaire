@@ -1,152 +1,65 @@
 const mongoose = require('mongoose');
 
 const bilanVisuelSchema = new mongoose.Schema({
-  // ===== 1. IDENTIFICATION DU PATIENT & CONTEXTE =====
-  // تعريف المريض والسياق
-  idPatient: {
-    type: String,
-    unique: true
-  },
-  dateExamen: {
-    type: Date,
-    default: Date.now
-  },
-  sexe: {
-    type: String,
-    enum: ['Homme', 'Femme'],
-    required: true
-  },
-  age: {
-    type: Number,
-    required: true
-  },
-  nom: {
-    type: String,
-    required: true
-  },
-  prenom: {
-    type: String,
-    required: true
-  },
-  profession: {
-    type: String
-  },
-  motifConsultation: {
-    type: String,
-    required: true
-  },
+  // ===== 1. IDENTIFICATION PATIENT (7 champs) =====
+  nom: { type: String, required: true },
+  prenom: { type: String, required: true },
+  date_naissance: { type: Date },
+  sexe: { type: String, enum: ['Homme', 'Femme', ''], default: '' },
+  telephone: { type: String },
+  email: { type: String },
+  ville: { type: String },
 
-  // ===== 2. ANAMNÈSE (ANTÉCÉDENTS) =====
-  // السوابق المرضية
-  antecedentsOculaires: {
-    type: String
-  },
-  antecedentsSystemiques: {
-    type: String
-  },
-  correctionActuelle: {
-    type: String,
-    enum: ['Oui', 'Non'],
-    default: 'Non'
-  },
-  puissanceVerresActuels: {
-    od: { type: String },
-    og: { type: String }
-  },
+  // ===== 2. ANAMNÈSE & CONTEXTE (4 champs) =====
+  motif_consultation: { type: String },
+  antecedents_oculaires: { type: String },
+  antecedents_generaux: { type: String },
+  port_actuel: { type: String },
 
-  // ===== 3. PRÉ-TESTS & SANTÉ OCULAIRE =====
-  // الفحوصات الأولية وصحة العين
-  avsc: {
-    od: { type: String },
-    og: { type: String },
-    bin: { type: String }
-  },
-  avcc: {
-    od: { type: String },
-    og: { type: String },
-    bin: { type: String }
-  },
-  pio: {
-    od: { type: Number },
-    og: { type: Number }
-  },
-  motiliteOculaire: {
-    type: String,
-    enum: ['Normale', 'Restreinte', 'Douleur', ''],
-    default: ''
-  },
-  testIshihara: {
-    type: String
-  },
+  // ===== 3. ACUITÉ VISUELLE (5 champs) =====
+  av_od_sc: { type: String },
+  av_og_sc: { type: String },
+  av_od_ac: { type: String },
+  av_og_ac: { type: String },
+  av_binoculaire: { type: String },
 
-  // ===== 4. RÉFRACTION =====
-  // قياس انكسار الضوء
-  refractionObjective: {
-    od: {
-      sphere: { type: Number },
-      cylindre: { type: Number },
-      axe: { type: Number }
-    },
-    og: {
-      sphere: { type: Number },
-      cylindre: { type: Number },
-      axe: { type: Number }
-    }
-  },
-  refractionSubjective: {
-    od: {
-      sphere: { type: Number },
-      cylindre: { type: Number },
-      axe: { type: Number },
-      acuiteFinale: { type: String }
-    },
-    og: {
-      sphere: { type: Number },
-      cylindre: { type: Number },
-      axe: { type: Number },
-      acuiteFinale: { type: String }
-    }
-  },
-  visionDePres: {
-    addition: { type: Number },
-    parinaud: { type: String }
-  },
+  // ===== 4. AUTORÉFRACTOMÈTRE OD (3 champs) =====
+  auto_od_sphere: { type: Number },
+  auto_od_cylindre: { type: Number },
+  auto_od_axe: { type: Number },
 
-  // ===== 5. VISION BINOCULAIRE & SANTÉ DU SEGMENT =====
-  // الرؤية المزدوجة وصحة القطاع
-  stereopsie: {
-    type: String
-  },
-  ppc: {
-    type: String
-  },
-  examenLampeAFente: {
-    type: String
-  },
+  // ===== 5. AUTORÉFRACTOMÈTRE OG (3 champs) =====
+  auto_og_sphere: { type: Number },
+  auto_og_cylindre: { type: Number },
+  auto_og_axe: { type: Number },
 
-  // ===== 6. DIAGNOSTIC ET DÉCISION (Classification BBA) =====
-  // التشخيص والقرار
-  typeAnomalie: [{
-    type: String
-  }],
-  actionEntreprise: {
-    type: String
-  },
-  noteLibre: {
-    type: String
-  }
+  // ===== 6. RÉFRACTION SUBJECTIVE OD (4 champs) =====
+  rx_od_sphere: { type: Number },
+  rx_od_cylindre: { type: Number },
+  rx_od_axe: { type: Number },
+  rx_od_addition: { type: Number },
+
+  // ===== 7. RÉFRACTION SUBJECTIVE OG (4 champs) =====
+  rx_og_sphere: { type: Number },
+  rx_og_cylindre: { type: Number },
+  rx_og_axe: { type: Number },
+  rx_og_addition: { type: Number },
+
+  // ===== 8. DIAMÈTRE PUPILLAIRE (3 champs) =====
+  dp_od: { type: Number },
+  dp_og: { type: Number },
+  dp_binoculaire: { type: Number },
+
+  // ===== 9. PRESSION INTRAOCULAIRE (2 champs) =====
+  pio_od: { type: Number },
+  pio_og: { type: Number },
+
+  // ===== 10. DIAGNOSTIC & SUIVI (3 champs) =====
+  diagnostic: { type: String },
+  observations: { type: String },
+  praticien: { type: String }
 }, {
   timestamps: true
-});
-
-// Auto-génération de l'ID patient
-bilanVisuelSchema.pre('save', async function(next) {
-  if (!this.idPatient) {
-    const count = await mongoose.model('BilanVisuel').countDocuments();
-    const year = new Date().getFullYear();
-    this.idPatient = `BBA-${year}-${String(count + 1).padStart(4, '0')}`;
-  }
-  next();
 });
 
 module.exports = mongoose.model('BilanVisuel', bilanVisuelSchema);

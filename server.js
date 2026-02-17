@@ -15,7 +15,25 @@ app.use(express.static('public'));
 
 // Connexion à MongoDB
 mongoose.connect(process.env.MONGODB_URI)
-.then(() => console.log('✅ Connecté à MongoDB'))
+.then(async () => {
+  console.log('✅ Connecté à MongoDB');
+  // Supprimer les anciens index obsolètes (ex: idPatient)
+  try {
+    const collection = mongoose.connection.collection('bilanvisuels');
+    const indexes = await collection.indexes();
+    for (const idx of indexes) {
+      if (idx.name !== '_id_' && !Object.keys(idx.key).every(k => ['_id','nom','prenom','createdAt'].includes(k))) {
+        // Drop indexes on fields that no longer exist in the schema
+        if (idx.key.idPatient !== undefined || idx.key.dateExamen !== undefined) {
+          await collection.dropIndex(idx.name);
+          console.log(`🗑️  Index obsolète "${idx.name}" supprimé`);
+        }
+      }
+    }
+  } catch (e) {
+    // Ignore si la collection n'existe pas encore
+  }
+})
 .catch((err) => console.error('❌ Erreur de connexion MongoDB:', err));
 
 // Routes
