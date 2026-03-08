@@ -15,7 +15,7 @@
         <header>
             <div class="header-icon"><i data-lucide="activity" class="icon-lg"></i></div>
             <h1>Institut BBA</h1>
-            <p class="header-sub">Gestion des Bilans Visuels — إدارة الفحوصات البصرية</p>
+            <p class="header-sub">Gestion des Bilans Visuels</p>
         </header>
 
         <div class="tabs">
@@ -36,347 +36,60 @@
                 <!-- REQUIRED FIELDS NOTICE -->
                 <div class="required-notice">
                     <i data-lucide="info" class="icon-btn"></i>
-                    <span>Les champs marqués d'un <strong>*</strong> sont obligatoires</span>
+                    <span>Les champs marques d'un <strong>*</strong> sont obligatoires</span>
                 </div>
 
-                <!-- STEPPER PROGRESS BAR -->
-                <div class="stepper">
-                    <div class="stepper-step active" data-target="1">
-                        <div class="stepper-circle">1</div>
-                        <span class="stepper-label">Identification</span>
-                    </div>
-                    <div class="stepper-line"></div>
-                    <div class="stepper-step" data-target="2">
-                        <div class="stepper-circle">2</div>
-                        <span class="stepper-label">Anamnèse</span>
-                    </div>
-                    <div class="stepper-line"></div>
-                    <div class="stepper-step" data-target="3">
-                        <div class="stepper-circle">3</div>
-                        <span class="stepper-label">Acuité</span>
-                    </div>
-                    <div class="stepper-line"></div>
-                    <div class="stepper-step" data-target="4">
-                        <div class="stepper-circle">4</div>
-                        <span class="stepper-label">Réfraction</span>
-                    </div>
-                    <div class="stepper-line"></div>
-                    <div class="stepper-step" data-target="5">
-                        <div class="stepper-circle">5</div>
-                        <span class="stepper-label">DP & PIO</span>
-                    </div>
-                    <div class="stepper-line"></div>
-                    <div class="stepper-step" data-target="6">
-                        <div class="stepper-circle">6</div>
-                        <span class="stepper-label">Diagnostic</span>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION 1: IDENTIFICATION PATIENT (7 champs) ===== -->
-                <div class="section step-section active" data-step="1">
+                <div class="section">
                     <h3>
-                        <i data-lucide="user" class="icon-section"></i>
+                        <i data-lucide="eye" class="icon-section"></i>
                         <span class="section-title-bi">
-                            <span>1. Identification du Patient</span>
+                            <span>Bilan Visuel</span>
                         </span>
                     </h3>
                     <div class="form-grid">
                         <div class="form-group">
-                            <label>Nom *</label>
-                            <input type="text" id="nom" name="nom" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Prénom *</label>
-                            <input type="text" id="prenom" name="prenom" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Date de naissance</label>
-                            <input type="date" id="date_naissance" name="date_naissance">
+                            <label>Age *</label>
+                            <input type="number" id="age" name="age" required min="0" max="150" placeholder="Ex: 25">
                         </div>
                         <div class="form-group">
                             <label>Sexe</label>
                             <select id="sexe" name="sexe">
-                                <option value="">-- Sélectionner --</option>
+                                <option value="">-- Selectionner --</option>
                                 <option value="Homme">Homme</option>
                                 <option value="Femme">Femme</option>
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Téléphone</label>
-                            <input type="tel" id="telephone" name="telephone" placeholder="Ex: 0555 123 456">
+                            <label>Ametropie</label>
+                            <input type="text" id="ametropie" name="ametropie" placeholder="Ex: Myopie, Hypermetropie, Astigmatisme...">
                         </div>
                         <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" id="email" name="email" placeholder="Ex: patient@email.com">
+                            <label>Anomalies</label>
+                            <input type="text" id="anomalies" name="anomalies" placeholder="Ex: Strabisme, Amblyopie...">
                         </div>
                         <div class="form-group">
-                            <label>Ville</label>
-                            <input type="text" id="ville" name="ville" placeholder="Ex: Alger, Oran...">
+                            <label>Acuite Visuelle</label>
+                            <input type="text" id="acuite_visuelle" name="acuite_visuelle" placeholder="Ex: 10/10, 5/10...">
+                        </div>
+                        <div class="form-group">
+                            <label>Statut Refractif</label>
+                            <select id="statut_refractif" name="statut_refractif">
+                                <option value="">-- Selectionner --</option>
+                                <option value="Emmetrope">Emmetrope</option>
+                                <option value="Non emmetrope">Non emmetrope</option>
+                            </select>
                         </div>
                     </div>
+
                     <div class="step-nav">
-                        <div></div>
-                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
-                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
+                        <button type="reset" class="btn btn-secondary" onclick="resetForm()">
+                            <i data-lucide="rotate-ccw" class="icon-btn"></i> Reinitialiser
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan
                         </button>
                     </div>
                 </div>
-
-                <!-- ===== SECTION 2: ANAMNÈSE & CONTEXTE (4 champs) ===== -->
-                <div class="section step-section" data-step="2">
-                    <h3>
-                        <i data-lucide="clipboard-list" class="icon-section"></i>
-                        <span class="section-title-bi">
-                            <span>2. Anamnèse & Contexte</span>
-                        </span>
-                    </h3>
-                    <div class="form-group">
-                        <label>Motif de consultation</label>
-                        <input type="text" id="motif_consultation" name="motif_consultation" placeholder="Ex: Baisse d'acuité, contrôle, céphalées...">
-                    </div>
-                    <div class="form-group">
-                        <label>Antécédents oculaires</label>
-                        <textarea id="antecedents_oculaires" name="antecedents_oculaires" rows="3" placeholder="Chirurgie, port de lentilles, glaucome, etc."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Antécédents généraux</label>
-                        <textarea id="antecedents_generaux" name="antecedents_generaux" rows="3" placeholder="Diabète, hypertension, allergies, etc."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Port actuel</label>
-                        <input type="text" id="port_actuel" name="port_actuel" placeholder="Ex: Lunettes, lentilles, rien...">
-                    </div>
-                    <div class="step-nav">
-                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
-                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
-                        </button>
-                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
-                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION 3: ACUITÉ VISUELLE (5 champs) ===== -->
-                <div class="section step-section" data-step="3">
-                    <h3>
-                        <i data-lucide="eye" class="icon-section"></i>
-                        <span class="section-title-bi">
-                            <span>3. Acuité Visuelle</span>
-                        </span>
-                    </h3>
-
-                    <h4>Sans Correction</h4>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>AV OD SC (Œil Droit Sans Correction)</label>
-                            <input type="text" id="av_od_sc" name="av_od_sc" placeholder="Ex: 5/10">
-                        </div>
-                        <div class="form-group">
-                            <label>AV OG SC (Œil Gauche Sans Correction)</label>
-                            <input type="text" id="av_og_sc" name="av_og_sc" placeholder="Ex: 4/10">
-                        </div>
-                    </div>
-
-                    <h4>Avec Correction</h4>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>AV OD AC (Œil Droit Avec Correction)</label>
-                            <input type="text" id="av_od_ac" name="av_od_ac" placeholder="Ex: 10/10">
-                        </div>
-                        <div class="form-group">
-                            <label>AV OG AC (Œil Gauche Avec Correction)</label>
-                            <input type="text" id="av_og_ac" name="av_og_ac" placeholder="Ex: 10/10">
-                        </div>
-                    </div>
-
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>AV Binoculaire</label>
-                            <input type="text" id="av_binoculaire" name="av_binoculaire" placeholder="Ex: 10/10">
-                        </div>
-                    </div>
-                    <div class="step-nav">
-                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
-                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
-                        </button>
-                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
-                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION 4: RÉFRACTION (Autoréf + Subjective = 14 champs) ===== -->
-                <div class="section step-section" data-step="4">
-                    <h3>
-                        <i data-lucide="scan-eye" class="icon-section"></i>
-                        <span class="section-title-bi">
-                            <span>4. Réfraction</span>
-                        </span>
-                    </h3>
-
-                    <h4>Autoréfractomètre — OD (Œil Droit)</h4>
-                    <div class="form-grid form-grid-3">
-                        <div class="form-group">
-                            <label>Sphère</label>
-                            <input type="number" id="auto_od_sphere" name="auto_od_sphere" step="0.25" placeholder="Ex: -2.00">
-                        </div>
-                        <div class="form-group">
-                            <label>Cylindre</label>
-                            <input type="number" id="auto_od_cylindre" name="auto_od_cylindre" step="0.25" placeholder="Ex: -0.50">
-                        </div>
-                        <div class="form-group input-unit" data-unit="°">
-                            <label>Axe</label>
-                            <input type="number" id="auto_od_axe" name="auto_od_axe" min="0" max="180" placeholder="Ex: 90">
-                        </div>
-                    </div>
-
-                    <h4>Autoréfractomètre — OG (Œil Gauche)</h4>
-                    <div class="form-grid form-grid-3">
-                        <div class="form-group">
-                            <label>Sphère</label>
-                            <input type="number" id="auto_og_sphere" name="auto_og_sphere" step="0.25" placeholder="Ex: -2.25">
-                        </div>
-                        <div class="form-group">
-                            <label>Cylindre</label>
-                            <input type="number" id="auto_og_cylindre" name="auto_og_cylindre" step="0.25" placeholder="Ex: -0.75">
-                        </div>
-                        <div class="form-group input-unit" data-unit="°">
-                            <label>Axe</label>
-                            <input type="number" id="auto_og_axe" name="auto_og_axe" min="0" max="180" placeholder="Ex: 85">
-                        </div>
-                    </div>
-
-                    <h4>Réfraction subjective — OD (Œil Droit)</h4>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>Sphère</label>
-                            <input type="number" id="rx_od_sphere" name="rx_od_sphere" step="0.25" placeholder="Ex: -2.00">
-                        </div>
-                        <div class="form-group">
-                            <label>Cylindre</label>
-                            <input type="number" id="rx_od_cylindre" name="rx_od_cylindre" step="0.25" placeholder="Ex: -0.50">
-                        </div>
-                        <div class="form-group input-unit" data-unit="°">
-                            <label>Axe</label>
-                            <input type="number" id="rx_od_axe" name="rx_od_axe" min="0" max="180" placeholder="Ex: 90">
-                        </div>
-                        <div class="form-group">
-                            <label>Addition OD</label>
-                            <input type="number" id="rx_od_addition" name="rx_od_addition" step="0.25" placeholder="Ex: 2.00">
-                        </div>
-                    </div>
-
-                    <h4>Réfraction subjective — OG (Œil Gauche)</h4>
-                    <div class="form-grid">
-                        <div class="form-group">
-                            <label>Sphère</label>
-                            <input type="number" id="rx_og_sphere" name="rx_og_sphere" step="0.25" placeholder="Ex: -2.25">
-                        </div>
-                        <div class="form-group">
-                            <label>Cylindre</label>
-                            <input type="number" id="rx_og_cylindre" name="rx_og_cylindre" step="0.25" placeholder="Ex: -0.75">
-                        </div>
-                        <div class="form-group input-unit" data-unit="°">
-                            <label>Axe</label>
-                            <input type="number" id="rx_og_axe" name="rx_og_axe" min="0" max="180" placeholder="Ex: 85">
-                        </div>
-                        <div class="form-group">
-                            <label>Addition OG</label>
-                            <input type="number" id="rx_og_addition" name="rx_og_addition" step="0.25" placeholder="Ex: 2.00">
-                        </div>
-                    </div>
-                    <div class="step-nav">
-                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
-                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
-                        </button>
-                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
-                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION 5: DIAMÈTRE PUPILLAIRE & PIO (5 champs) ===== -->
-                <div class="section step-section" data-step="5">
-                    <h3>
-                        <i data-lucide="circle" class="icon-section"></i>
-                        <span class="section-title-bi">
-                            <span>5. Diamètre Pupillaire & Pression Intraoculaire</span>
-                        </span>
-                    </h3>
-
-                    <h4>Diamètre Pupillaire (mm)</h4>
-                    <div class="form-grid form-grid-3">
-                        <div class="form-group input-unit" data-unit="mm">
-                            <label>DP OD</label>
-                            <input type="number" id="dp_od" name="dp_od" step="0.1" placeholder="Ex: 32">
-                        </div>
-                        <div class="form-group input-unit" data-unit="mm">
-                            <label>DP OG</label>
-                            <input type="number" id="dp_og" name="dp_og" step="0.1" placeholder="Ex: 31.5">
-                        </div>
-                        <div class="form-group input-unit" data-unit="mm">
-                            <label>DP Binoculaire</label>
-                            <input type="number" id="dp_binoculaire" name="dp_binoculaire" step="0.1" placeholder="Ex: 63.5">
-                        </div>
-                    </div>
-
-                    <h4>Pression Intraoculaire (mmHg)</h4>
-                    <div class="form-grid">
-                        <div class="form-group input-unit" data-unit="mmHg">
-                            <label>PIO OD</label>
-                            <input type="number" id="pio_od" name="pio_od" step="0.1" placeholder="Ex: 15">
-                        </div>
-                        <div class="form-group input-unit" data-unit="mmHg">
-                            <label>PIO OG</label>
-                            <input type="number" id="pio_og" name="pio_og" step="0.1" placeholder="Ex: 16">
-                        </div>
-                    </div>
-                    <div class="step-nav">
-                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
-                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
-                        </button>
-                        <button type="button" class="btn btn-primary btn-next" onclick="nextStep()">
-                            Suivant <i data-lucide="arrow-right" class="icon-btn"></i>
-                        </button>
-                    </div>
-                </div>
-
-                <!-- ===== SECTION 6: DIAGNOSTIC & SUIVI (3 champs) ===== -->
-                <div class="section section-diagnostic step-section" data-step="6">
-                    <h3>
-                        <i data-lucide="clipboard-check" class="icon-section"></i>
-                        <span class="section-title-bi">
-                            <span>6. Diagnostic & Suivi</span>
-                        </span>
-                    </h3>
-                    <div class="form-group">
-                        <label>Diagnostic</label>
-                        <textarea id="diagnostic" name="diagnostic" rows="3" placeholder="Ex: Myopie, astigmatisme, presbytie..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Observations</label>
-                        <textarea id="observations" name="observations" rows="4" placeholder="Observations complémentaires..."></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label>Praticien</label>
-                        <input type="text" id="praticien" name="praticien" placeholder="Nom du praticien">
-                    </div>
-                </div>
-
-                    <!-- Step 6 Navigation -->
-                    <div class="step-nav">
-                        <button type="button" class="btn btn-secondary btn-prev" onclick="prevStep()">
-                            <i data-lucide="arrow-left" class="icon-btn"></i> Précédent
-                        </button>
-                        <div class="step-nav-right">
-                            <button type="reset" class="btn btn-secondary" onclick="resetForm()">
-                                <i data-lucide="rotate-ccw" class="icon-btn"></i> Réinitialiser
-                            </button>
-                            <button type="submit" class="btn btn-primary">
-                                <i data-lucide="save" class="icon-btn"></i> Enregistrer le Bilan
-                            </button>
-                        </div>
-                    </div>
             </form>
         </div>
 
@@ -384,7 +97,7 @@
         <div id="liste" class="tab-content">
             <div class="section">
                 <div class="toolbar">
-                    <h3><i data-lucide="folder-open" class="icon-section"></i> Liste des Bilans — قائمة الفحوصات</h3>
+                    <h3><i data-lucide="folder-open" class="icon-section"></i> Liste des Bilans</h3>
                     <div class="toolbar-actions">
                         <button onclick="loadBilans()" class="btn btn-secondary">
                             <i data-lucide="refresh-cw" class="icon-btn"></i> Actualiser
@@ -394,16 +107,17 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <div class="filters">
-                    <div class="filter-item">
-                        <i data-lucide="search" class="icon-filter"></i>
-                        <input type="text" id="searchNom" placeholder="Rechercher par nom..." onkeyup="filterBilans()">
-                    </div>
                     <select id="filterSexe" onchange="filterBilans()">
                         <option value="">Tous les sexes</option>
                         <option value="Homme">Homme</option>
                         <option value="Femme">Femme</option>
+                    </select>
+                    <select id="filterStatut" onchange="filterBilans()">
+                        <option value="">Tous les statuts</option>
+                        <option value="Emmetrope">Emmetrope</option>
+                        <option value="Non emmetrope">Non emmetrope</option>
                     </select>
                     <input type="date" id="filterDateDebut" onchange="filterBilans()">
                     <input type="date" id="filterDateFin" onchange="filterBilans()">
@@ -416,11 +130,11 @@
         </div>
     </div>
 
-    <!-- MODAL DÉTAILS BILAN -->
+    <!-- MODAL DETAILS BILAN -->
     <div id="bilanModal" class="modal-overlay" onclick="closeModal(event)">
         <div class="modal-content" onclick="event.stopPropagation()">
             <div class="modal-header">
-                <h3><i data-lucide="file-text" class="icon-section"></i> Détails du Bilan — تفاصيل الفحص</h3>
+                <h3><i data-lucide="file-text" class="icon-section"></i> Details du Bilan</h3>
                 <button class="modal-close" onclick="document.getElementById('bilanModal').classList.remove('show')">
                     <i data-lucide="x" class="icon-btn"></i>
                 </button>
