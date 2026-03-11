@@ -42,11 +42,14 @@ async function saveBilan(e) {
 
     const f = new FormData(e.target);
 
+    const ametropieChecked = f.getAll('ametropie');
+    const anomaliesChecked = f.getAll('anomalies');
+
     const bilan = {
         age: parseInt(f.get('age')) || undefined,
         sexe: f.get('sexe') || undefined,
-        ametropie: f.get('ametropie') || undefined,
-        anomalies: f.get('anomalies') || undefined,
+        ametropie: ametropieChecked.length ? ametropieChecked.join(', ') : undefined,
+        anomalies: anomaliesChecked.length ? anomaliesChecked.join(', ') : undefined,
         acuite_visuelle: f.get('acuite_visuelle') || undefined,
         statut_refractif: f.get('statut_refractif') || undefined
     };
@@ -114,7 +117,7 @@ function displayBilans(bilansToDisplay) {
             <div class="bilan-card-header">
                 <h4>
                     <i data-lucide="user" class="icon-btn"></i>
-                    Age: ${bilan.age || '—'} | ${bilan.sexe || '—'}
+                    Age: ${bilan.age || 'ï¿½'} | ${bilan.sexe || 'ï¿½'}
                 </h4>
                 <div class="bilan-card-actions">
                     <button onclick="viewBilan('${bilan._id}')" class="btn btn-secondary"><i data-lucide="eye" class="icon-btn"></i> Voir</button>
@@ -124,19 +127,19 @@ function displayBilans(bilansToDisplay) {
             <div class="bilan-card-content">
                 <div class="bilan-info">
                     <strong>Ametropie</strong>
-                    <span>${bilan.ametropie || '—'}</span>
+                    <span>${bilan.ametropie || 'ï¿½'}</span>
                 </div>
                 <div class="bilan-info">
                     <strong>Anomalies</strong>
-                    <span>${bilan.anomalies || '—'}</span>
+                    <span>${bilan.anomalies || 'ï¿½'}</span>
                 </div>
                 <div class="bilan-info">
                     <strong>Acuite Visuelle</strong>
-                    <span>${bilan.acuite_visuelle || '—'}</span>
+                    <span>${bilan.acuite_visuelle || 'ï¿½'}</span>
                 </div>
                 <div class="bilan-info">
                     <strong>Statut</strong>
-                    <span>${bilan.statut_refractif || '—'}</span>
+                    <span>${bilan.statut_refractif || 'ï¿½'}</span>
                 </div>
             </div>
         </div>
@@ -172,27 +175,27 @@ async function viewBilan(id) {
                 <div class="detail-grid">
                     <div class="detail-item">
                         <span class="detail-label">Age</span>
-                        <span class="detail-value">${b.age || '—'}</span>
+                        <span class="detail-value">${b.age || 'ï¿½'}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Sexe</span>
-                        <span class="detail-value">${b.sexe || '—'}</span>
+                        <span class="detail-value">${b.sexe || 'ï¿½'}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Ametropie</span>
-                        <span class="detail-value">${b.ametropie || '—'}</span>
+                        <span class="detail-value">${b.ametropie || 'ï¿½'}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Anomalies</span>
-                        <span class="detail-value">${b.anomalies || '—'}</span>
+                        <span class="detail-value">${b.anomalies || 'ï¿½'}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Acuite Visuelle</span>
-                        <span class="detail-value">${b.acuite_visuelle || '—'}</span>
+                        <span class="detail-value">${b.acuite_visuelle || 'ï¿½'}</span>
                     </div>
                     <div class="detail-item">
                         <span class="detail-label">Statut Refractif</span>
-                        <span class="detail-value">${b.statut_refractif || '—'}</span>
+                        <span class="detail-value">${b.statut_refractif || 'ï¿½'}</span>
                     </div>
                 </div>
             `;

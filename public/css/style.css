@@ -507,6 +507,9 @@ input[type="date"]:focus::-webkit-calendar-picker-indicator {
 }
 
 /* ===== CHECKBOX GRID ===== */
+.full-width {
+    grid-column: 1 / -1;
+}
 .checkbox-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));

@@ -59,17 +59,50 @@
                                 <option value="Femme">Femme</option>
                             </select>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group full-width">
                             <label>Ametropie</label>
-                            <input type="text" id="ametropie" name="ametropie" placeholder="Ex: Myopie, Hypermetropie, Astigmatisme...">
+                            <div class="checkbox-grid">
+                                <label class="checkbox-label"><input type="checkbox" name="ametropie" value="Myopie"><span>Myopie</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="ametropie" value="Hypermetropie"><span>Hypermetropie</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="ametropie" value="Astigmatisme"><span>Astigmatisme</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="ametropie" value="Presbytie"><span>Presbytie</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="ametropie" value="Anisometropie"><span>Anisometropie</span></label>
+                            </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group full-width">
                             <label>Anomalies</label>
-                            <input type="text" id="anomalies" name="anomalies" placeholder="Ex: Strabisme, Amblyopie...">
+                            <div class="checkbox-grid">
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Strabisme"><span>Strabisme</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Amblyopie"><span>Amblyopie</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Nystagmus"><span>Nystagmus</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Daltonisme"><span>Daltonisme</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Ptosis"><span>Ptosis</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Cataracte"><span>Cataracte</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Glaucome"><span>Glaucome</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Keratocone"><span>Keratocone</span></label>
+                                <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Aucune"><span>Aucune</span></label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label>Acuite Visuelle</label>
-                            <input type="text" id="acuite_visuelle" name="acuite_visuelle" placeholder="Ex: 10/10, 5/10...">
+                            <select id="acuite_visuelle" name="acuite_visuelle">
+                                <option value="">-- Selectionner --</option>
+                                <option value="10/10">10/10</option>
+                                <option value="9/10">9/10</option>
+                                <option value="8/10">8/10</option>
+                                <option value="7/10">7/10</option>
+                                <option value="6/10">6/10</option>
+                                <option value="5/10">5/10</option>
+                                <option value="4/10">4/10</option>
+                                <option value="3/10">3/10</option>
+                                <option value="2/10">2/10</option>
+                                <option value="1/10">1/10</option>
+                                <option value="< 1/10">< 1/10</option>
+                                <option value="CLD">CLD (Compte les doigts)</option>
+                                <option value="VBLM">VBLM (Voit bouger la main)</option>
+                                <option value="PL+">PL+ (Perception lumineuse)</option>
+                                <option value="PL-">PL- (Pas de perception)</option>
+                            </select>
                         </div>
                         <div class="form-group">
                             <label>Statut Refractif</label>
