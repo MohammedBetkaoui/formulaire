@@ -57,6 +57,66 @@ router.get('/stats/overview', async (req, res) => {
 function v(val) { return val != null && val !== '' ? val : ''; }
 function vn(val) { return val != null ? val : ''; }
 
+const AMETROPIE_EXPORT_OPTIONS = [
+  { label: 'Myopie', column: 'ametropie_myopie' },
+  { label: 'Hypermetropie', column: 'ametropie_hypermetropie' },
+  { label: 'Astigmatisme', column: 'ametropie_astigmatisme' }
+];
+
+const ANOMALIES_EXPORT_OPTIONS = [
+  { label: "Insuffisance d'accommodation", column: 'anomalie_insuffisance_accommodation' },
+  { label: "Exces d'accommodation", column: 'anomalie_exces_accommodation' },
+  { label: 'Fatigue accommodative', column: 'anomalie_fatigue_accommodative' },
+  { label: 'Spasme accommodatif', column: 'anomalie_spasme_accommodatif' },
+  { label: 'Inertie accommodative', column: 'anomalie_inertie_accommodative' },
+  { label: 'Insuffisance de convergence', column: 'anomalie_insuffisance_convergence' },
+  { label: 'Pseudo-insuffisance de convergence', column: 'anomalie_pseudo_insuffisance_convergence' },
+  { label: 'Exces de convergence', column: 'anomalie_exces_convergence' },
+  { label: 'Esophorie basique', column: 'anomalie_esophorie_basique' },
+  { label: 'Insuffisance de divergence', column: 'anomalie_insuffisance_divergence' },
+  { label: 'Exophorie basique', column: 'anomalie_exophorie_basique' },
+  { label: 'Exces de divergence', column: 'anomalie_exces_divergence' },
+  { label: 'Phorie verticale', column: 'anomalie_phorie_verticale' },
+  { label: 'Dysfonctionnement vergentiel', column: 'anomalie_dysfonctionnement_vergentiel' },
+  { label: 'Reserves fusionnelles reduites', column: 'anomalie_reserves_fusionnelles_reduites' },
+  { label: "Pas d'anomalie", column: 'anomalie_pas_d_anomalie' }
+];
+
+const CSV_VALUE_ALIASES = {
+  aucune: 'pas d anomalie'
+};
+
+function normalizeCsvChoice(value) {
+  return String(value || '')
+    .toLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\'\`\u2019]/g, ' ')
+    .replace(/[^a-z0-9]+/g, ' ')
+    .trim()
+    .replace(/\s+/g, ' ');
+}
+
+function parseCsvChoices(rawValue) {
+  if (rawValue == null || rawValue === '') return new Set();
+
+  const source = Array.isArray(rawValue) ? rawValue.join(',') : String(rawValue);
+
+  return new Set(
+    source
+      .split(/[;,]/)
+      .map(part => normalizeCsvChoice(part))
+      .filter(Boolean)
+      .map(choice => CSV_VALUE_ALIASES[choice] || choice)
+  );
+}
+
+function hasCsvChoice(choices, label) {
+  const normalizedLabel = normalizeCsvChoice(label);
+  const resolvedLabel = CSV_VALUE_ALIASES[normalizedLabel] || normalizedLabel;
+  return choices.has(resolvedLabel);
+}
+
 // Exporter les bilans en CSV (must be before /:id)
 router.get('/export/csv', async (req, res) => {
   try {
@@ -79,16 +139,40 @@ router.get('/export/csv', async (req, res) => {
       });
     }
 
-    const fields = ['age', 'sexe', 'ametropie', 'anomalies', 'acuite_visuelle', 'statut_refractif'];
+    const fields = [
+      'age',
+      'sexe',
+      'ametropie',
+      'anomalies',
+      'acuite_visuelle',
+      'statut_refractif',
+      ...AMETROPIE_EXPORT_OPTIONS.map(option => option.column),
+      ...ANOMALIES_EXPORT_OPTIONS.map(option => option.column)
+    ];
 
-    const flattenedData = bilans.map(b => ({
-      age: vn(b.age),
-      sexe: v(b.sexe),
-      ametropie: v(b.ametropie),
-      anomalies: v(b.anomalies),
-      acuite_visuelle: v(b.acuite_visuelle),
-      statut_refractif: v(b.statut_refractif)
-    }));
+    const flattenedData = bilans.map((bilan) => {
+      const ametropieChoices = parseCsvChoices(bilan.ametropie);
+      const anomaliesChoices = parseCsvChoices(bilan.anomalies);
+
+      const row = {
+        age: vn(bilan.age),
+        sexe: v(bilan.sexe),
+        ametropie: v(bilan.ametropie),
+        anomalies: v(bilan.anomalies),
+        acuite_visuelle: v(bilan.acuite_visuelle),
+        statut_refractif: v(bilan.statut_refractif)
+      };
+
+      AMETROPIE_EXPORT_OPTIONS.forEach((option) => {
+        row[option.column] = hasCsvChoice(ametropieChoices, option.label) ? 1 : 0;
+      });
+
+      ANOMALIES_EXPORT_OPTIONS.forEach((option) => {
+        row[option.column] = hasCsvChoice(anomaliesChoices, option.label) ? 1 : 0;
+      });
+
+      return row;
+    });
 
     const parser = new Parser({ fields, delimiter: ';', withBOM: true });
     const csv = parser.parse(flattenedData);
