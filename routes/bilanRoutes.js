@@ -31,17 +31,11 @@ router.get('/stats/overview', async (req, res) => {
       { $group: { _id: '$sexe', count: { $sum: 1 } } }
     ]);
 
-    const parStatutRefractif = await BilanVisuel.aggregate([
-      { $match: { statut_refractif: { $ne: null, $ne: '' } } },
-      { $group: { _id: '$statut_refractif', count: { $sum: 1 } } }
-    ]);
-
     res.json({
       success: true,
       data: {
         totalBilans,
-        parSexe,
-        parStatutRefractif
+        parSexe
       }
     });
   } catch (error) {
@@ -69,14 +63,18 @@ const ANOMALIES_EXPORT_OPTIONS = [
   { label: 'Fatigue accommodative', column: 'anomalie_fatigue_accommodative' },
   { label: 'Spasme accommodatif', column: 'anomalie_spasme_accommodatif' },
   { label: 'Inertie accommodative', column: 'anomalie_inertie_accommodative' },
+  { label: 'Paralysie accommodative', column: 'anomalie_paralysie_accommodative' },
   { label: 'Insuffisance de convergence', column: 'anomalie_insuffisance_convergence' },
   { label: 'Pseudo-insuffisance de convergence', column: 'anomalie_pseudo_insuffisance_convergence' },
   { label: 'Exces de convergence', column: 'anomalie_exces_convergence' },
+  { label: 'Insuffisance de convergence pure', column: 'anomalie_insuffisance_convergence_pure' },
   { label: 'Esophorie basique', column: 'anomalie_esophorie_basique' },
   { label: 'Insuffisance de divergence', column: 'anomalie_insuffisance_divergence' },
   { label: 'Exophorie basique', column: 'anomalie_exophorie_basique' },
   { label: 'Exces de divergence', column: 'anomalie_exces_divergence' },
-  { label: 'Phorie verticale', column: 'anomalie_phorie_verticale' },
+  { label: 'Phorie verticale hyper D/G', column: 'anomalie_phorie_verticale_hyper_d_g' },
+  { label: 'Phorie verticale hyper G/D', column: 'anomalie_phorie_verticale_hyper_g_d' },
+  { label: 'Paralysie oculomotrice', column: 'anomalie_paralysie_oculomotrice' },
   { label: 'Dysfonctionnement vergentiel', column: 'anomalie_dysfonctionnement_vergentiel' },
   { label: 'Reserves fusionnelles reduites', column: 'anomalie_reserves_fusionnelles_reduites' },
   { label: "Pas d'anomalie", column: 'anomalie_pas_d_anomalie' }
@@ -145,7 +143,6 @@ router.get('/export/csv', async (req, res) => {
       'ametropie',
       'anomalies',
       'acuite_visuelle',
-      'statut_refractif',
       ...AMETROPIE_EXPORT_OPTIONS.map(option => option.column),
       ...ANOMALIES_EXPORT_OPTIONS.map(option => option.column)
     ];
@@ -159,8 +156,7 @@ router.get('/export/csv', async (req, res) => {
         sexe: v(bilan.sexe),
         ametropie: v(bilan.ametropie),
         anomalies: v(bilan.anomalies),
-        acuite_visuelle: v(bilan.acuite_visuelle),
-        statut_refractif: v(bilan.statut_refractif)
+        acuite_visuelle: v(bilan.acuite_visuelle)
       };
 
       AMETROPIE_EXPORT_OPTIONS.forEach((option) => {

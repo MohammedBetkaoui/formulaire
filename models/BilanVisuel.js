@@ -5,8 +5,7 @@ const bilanVisuelSchema = new mongoose.Schema({
   sexe: { type: String, enum: ['Homme', 'Femme', ''], default: '' },
   ametropie: { type: String },
   anomalies: { type: String },
-  acuite_visuelle: { type: String },
-  statut_refractif: { type: String, enum: ['Emmetrope', 'Non emmetrope', ''], default: '' }
+  acuite_visuelle: { type: String }
 }, {
   timestamps: true
 });

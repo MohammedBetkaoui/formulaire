@@ -78,6 +78,7 @@
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Fatigue accommodative"><span>Fatigue accommodative</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Spasme accommodatif"><span>Spasme accommodatif</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Inertie accommodative"><span>Inertie accommodative</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Paralysie accommodative"><span>Paralysie accommodative</span></label>
                                     </div>
                                 </div>
 
@@ -87,6 +88,7 @@
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Insuffisance de convergence"><span>Insuffisance de convergence</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Pseudo-insuffisance de convergence"><span>Pseudo-insuffisance de convergence</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Exc&egrave;s de convergence"><span>Exc&egrave;s de convergence</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Insuffisance de convergence pure"><span>Insuffisance de convergence pure</span></label>
                                     </div>
                                 </div>
 
@@ -111,7 +113,9 @@
                                 <div class="anomalies-group">
                                     <p class="anomalies-group-title"><strong>Autres :</strong></p>
                                     <div class="checkbox-grid">
-                                        <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Phorie verticale"><span>Phorie verticale</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Phorie verticale hyper D/G"><span>Phorie verticale hyper D/G</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Phorie verticale hyper G/D"><span>Phorie verticale hyper G/D</span></label>
+                                        <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Paralysie oculomotrice"><span>Paralysie oculomotrice</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Dysfonctionnement vergentiel"><span>Dysfonctionnement vergentiel</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="R&eacute;serves fusionnelles r&eacute;duites"><span>R&eacute;serves fusionnelles r&eacute;duites</span></label>
                                         <label class="checkbox-label"><input type="checkbox" name="anomalies" value="Pas d'anomalie"><span>Pas d'anomalie</span></label>
@@ -134,18 +138,6 @@
                                 <option value="2/10">2/10</option>
                                 <option value="1/10">1/10</option>
                                 <option value="< 1/10">< 1/10</option>
-                                <option value="CLD">CLD (Compte les doigts)</option>
-                                <option value="VBLM">VBLM (Voit bouger la main)</option>
-                                <option value="PL+">PL+ (Perception lumineuse)</option>
-                                <option value="PL-">PL- (Pas de perception)</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Statut Refractif</label>
-                            <select id="statut_refractif" name="statut_refractif">
-                                <option value="">-- Selectionner --</option>
-                                <option value="Emmetrope">Emmetrope</option>
-                                <option value="Non emmetrope">Non emmetrope</option>
                             </select>
                         </div>
                     </div>
@@ -182,11 +174,6 @@
                         <option value="">Tous les sexes</option>
                         <option value="Homme">Homme</option>
                         <option value="Femme">Femme</option>
-                    </select>
-                    <select id="filterStatut" onchange="filterBilans()">
-                        <option value="">Tous les statuts</option>
-                        <option value="Emmetrope">Emmetrope</option>
-                        <option value="Non emmetrope">Non emmetrope</option>
                     </select>
                     <input type="date" id="filterDateDebut" onchange="filterBilans()">
                     <input type="date" id="filterDateFin" onchange="filterBilans()">

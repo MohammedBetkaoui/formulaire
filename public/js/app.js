@@ -50,8 +50,7 @@ async function saveBilan(e) {
         sexe: f.get('sexe') || undefined,
         ametropie: ametropieChecked.length ? ametropieChecked.join(', ') : undefined,
         anomalies: anomaliesChecked.length ? anomaliesChecked.join(', ') : undefined,
-        acuite_visuelle: f.get('acuite_visuelle') || undefined,
-        statut_refractif: f.get('statut_refractif') || undefined
+        acuite_visuelle: f.get('acuite_visuelle') || undefined
     };
 
     try {
@@ -137,10 +136,7 @@ function displayBilans(bilansToDisplay) {
                     <strong>Acuite Visuelle</strong>
                     <span>${bilan.acuite_visuelle || '�'}</span>
                 </div>
-                <div class="bilan-info">
-                    <strong>Statut</strong>
-                    <span>${bilan.statut_refractif || '�'}</span>
-                </div>
+
             </div>
         </div>
     `).join('');
@@ -151,12 +147,10 @@ function displayBilans(bilansToDisplay) {
 // Filtrer les bilans
 function filterBilans() {
     const filterSexe = document.getElementById('filterSexe').value;
-    const filterStatut = document.getElementById('filterStatut').value;
 
     let filtered = bilans.filter(bilan => {
         const sexeMatch = !filterSexe || bilan.sexe === filterSexe;
-        const statutMatch = !filterStatut || bilan.statut_refractif === filterStatut;
-        return sexeMatch && statutMatch;
+        return sexeMatch;
     });
 
     displayBilans(filtered);
@@ -193,10 +187,7 @@ async function viewBilan(id) {
                         <span class="detail-label">Acuite Visuelle</span>
                         <span class="detail-value">${b.acuite_visuelle || '�'}</span>
                     </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Statut Refractif</span>
-                        <span class="detail-value">${b.statut_refractif || '�'}</span>
-                    </div>
+
                 </div>
             `;
             document.getElementById('bilanModal').classList.add('show');
