@@ -13,28 +13,36 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
-// Connexion à MongoDB
-mongoose.connect(process.env.MONGODB_URI)
-.then(async () => {
-  console.log('✅ Connecté à MongoDB');
-  // Supprimer les anciens index obsolètes (ex: idPatient)
-  try {
-    const collection = mongoose.connection.collection('bilanvisuels');
-    const indexes = await collection.indexes();
-    for (const idx of indexes) {
-      if (idx.name !== '_id_' && !Object.keys(idx.key).every(k => ['_id','nom','prenom','createdAt'].includes(k))) {
-        // Drop indexes on fields that no longer exist in the schema
-        if (idx.key.idPatient !== undefined || idx.key.dateExamen !== undefined) {
-          await collection.dropIndex(idx.name);
-          console.log(`🗑️  Index obsolète "${idx.name}" supprimé`);
-        }
-      }
-    }
-  } catch (e) {
-    // Ignore si la collection n'existe pas encore
+// Connexion à MongoDB pour Vercel (Serverless)
+let isConnected = false;
+
+const connectDB = async () => {
+  if (isConnected) {
+    console.log('✅ Utilisation de la connexion MongoDB existante');
+    return;
   }
-})
-.catch((err) => console.error('❌ Erreur de connexion MongoDB:', err));
+  
+  try {
+    const db = await mongoose.connect(process.env.MONGODB_URI, {
+      serverSelectionTimeoutMS: 5000
+    });
+    isConnected = db.connections[0].readyState === 1;
+    console.log('✅ Nouvelle connexion à MongoDB établie');
+  } catch (error) {
+    console.error('❌ Erreur critique de connexion MongoDB:', error);
+    throw error;
+  }
+};
+
+// Middleware pour s'assurer que la DB est connectée avant chaque requête API
+app.use('/api', async (req, res, next) => {
+  try {
+    await connectDB();
+    next();
+  } catch (error) {
+    res.status(500).json({ success: false, message: "Erreur de connexion à la base de données", error: error.message });
+  }
+});
 
 // Routes
 app.use('/api/bilans', bilanRoutes);
