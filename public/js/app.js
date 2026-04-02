@@ -158,15 +158,15 @@ function displayBilans(bilansToDisplay) {
         
         return `
             <tr>
-                <td><span class="badge" style="font-family: monospace;">#${shortId}</span></td>
-                <td>
+                <td data-label="Réf"><span class="badge" style="font-family: monospace;">#${shortId}</span></td>
+                <td data-label="Patient">
                     <div style="font-weight: 600; color: var(--primary);">Age: ${bilan.age || '?'} ans</div>
                     <div style="font-size: 0.85em; color: var(--text-muted);">${bilan.sexe || 'Non spécifié'}</div>
                 </td>
-                <td><span style="color:var(--text-main); font-weight:500;">${bilan.ametropie || '-'}</span></td>
-                <td title="${bilan.anomalies || ''}">${anomaliesStr}</td>
-                <td><span class="badge badge-primary">${bilan.acuite_visuelle || '-'}</span></td>
-                <td>
+                <td data-label="Amétropie"><span style="color:var(--text-main); font-weight:500;">${bilan.ametropie || '-'}</span></td>
+                <td data-label="Anomalies" title="${bilan.anomalies || ''}">${anomaliesStr}</td>
+                <td data-label="Acuité"><span class="badge badge-primary">${bilan.acuite_visuelle || '-'}</span></td>
+                <td data-label="Actions">
                     <div class="table-actions">
                         <button onclick="viewBilan('${bilan._id}')" class="btn btn-secondary btn-sm" title="Voir les détails">
                             <i data-lucide="eye" class="icon-btn"></i> Voir

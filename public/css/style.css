@@ -584,6 +584,54 @@ select {
 .ml-1 { margin-left: 4px; }
 .ml-2 { margin-left: 8px; }
 
+/* TABLE RESPONSIVE */
+@media (max-width: 768px) {
+    .modern-table, .modern-table tbody, .modern-table tr, .modern-table td {
+        display: block;
+        width: 100%;
+    }
+    .modern-table thead {
+        display: none;
+    }
+    .modern-table tr {
+        margin-bottom: 20px;
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        box-shadow: var(--shadow-sm);
+    }
+    .modern-table td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border-bottom: 1px dashed var(--border);
+        text-align: right;
+    }
+    .modern-table td:last-child {
+        border-bottom: none;
+        justify-content: center;
+    }
+    .modern-table td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: var(--text-muted);
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        margin-right: 16px;
+        text-align: left;
+    }
+    .modern-table td > div:not(.table-actions) {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+    .table-actions {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
 .modal-body { padding: 32px; }
 .detail-grid {
     display: grid;
