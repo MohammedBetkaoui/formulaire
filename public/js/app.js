@@ -102,9 +102,20 @@ async function loadBilans(filters = {}) {
     }
 }
 
+// Fonction pour calculer le nombre total de bilans
+function calculerTotalBilans(listeBilans) {
+    return listeBilans ? listeBilans.length : 0;
+}
+
 // Afficher les bilans
 function displayBilans(bilansToDisplay) {
     const listDiv = document.getElementById('bilansList');
+    
+    // Mettre à jour l'affichage du total
+    const totalElement = document.getElementById('totalBilansCount');
+    if (totalElement) {
+        totalElement.textContent = calculerTotalBilans(bilansToDisplay);
+    }
 
     if (bilansToDisplay.length === 0) {
         listDiv.innerHTML = '<p class="loading">Aucun bilan trouve</p>';
