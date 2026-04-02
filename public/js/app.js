@@ -7,6 +7,9 @@ const API_URL = window.location.protocol === 'file:'
 
 // Etat de l'application
 let bilans = [];
+// Variables de pagination
+let currentPage = 1;
+const ITEMS_PER_PAGE = 10;
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', function() {
@@ -107,6 +110,7 @@ function calculerTotalBilans(listeBilans) {
     return listeBilans ? listeBilans.length : 0;
 }
 
+
 // Afficher les bilans
 function displayBilans(bilansToDisplay) {
     const listDiv = document.getElementById('bilansList');
@@ -118,42 +122,100 @@ function displayBilans(bilansToDisplay) {
     }
 
     if (bilansToDisplay.length === 0) {
-        listDiv.innerHTML = '<p class="loading">Aucun bilan trouve</p>';
+        listDiv.innerHTML = '<div style="text-align:center; padding: 3rem;"><i data-lucide="inbox" style="width:48px;height:48px;color:#cbd5e1;margin-bottom:1rem;"></i><p class="loading" style="padding:0">Aucun bilan trouve</p></div>';
+        lucide.createIcons();
         return;
     }
 
-    listDiv.innerHTML = bilansToDisplay.map(bilan => `
-        <div class="bilan-card">
-            <div class="bilan-card-header">
-                <h4>
-                    <i data-lucide="user" class="icon-btn"></i>
-                    Age: ${bilan.age || '�'} | ${bilan.sexe || '�'}
-                </h4>
-                <div class="bilan-card-actions">
-                    <button onclick="viewBilan('${bilan._id}')" class="btn btn-secondary"><i data-lucide="eye" class="icon-btn"></i> Voir</button>
-                    <button onclick="deleteBilan('${bilan._id}')" class="btn btn-danger"><i data-lucide="trash-2" class="icon-btn"></i></button>
-                </div>
-            </div>
-            <div class="bilan-card-content">
-                <div class="bilan-info">
-                    <strong>Ametropie</strong>
-                    <span>${bilan.ametropie || '�'}</span>
-                </div>
-                <div class="bilan-info">
-                    <strong>Anomalies</strong>
-                    <span>${bilan.anomalies || '�'}</span>
-                </div>
-                <div class="bilan-info">
-                    <strong>Acuite Visuelle</strong>
-                    <span>${bilan.acuite_visuelle || '�'}</span>
-                </div>
+    // Traitement de la pagination
+    const totalPages = Math.ceil(bilansToDisplay.length / ITEMS_PER_PAGE);
+    if (currentPage > totalPages) currentPage = totalPages;
+    if (currentPage < 1) currentPage = 1;
+    
+    const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+    const endIndex = startIndex + ITEMS_PER_PAGE;
+    const currentBilans = bilansToDisplay.slice(startIndex, endIndex);
 
-            </div>
+    let html = `
+        <div style="overflow-x: auto; margin-top: 1rem; border-radius: var(--radius-lg); border: 1px solid var(--border);">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th><i data-lucide="hash" class="icon-sm"></i> Réf</th>
+                        <th><i data-lucide="user" class="icon-sm"></i> Patient</th>
+                        <th><i data-lucide="eye" class="icon-sm"></i> Amétropie</th>
+                        <th><i data-lucide="activity" class="icon-sm"></i> Anomalies</th>
+                        <th><i data-lucide="target" class="icon-sm"></i> Acuité</th>
+                        <th><i data-lucide="settings" class="icon-sm"></i> Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+    `;
+
+    html += currentBilans.map(bilan => {
+        const shortId = bilan._id ? bilan._id.substring(bilan._id.length - 6).toUpperCase() : 'N/A';
+        const anomaliesStr = bilan.anomalies ? (bilan.anomalies.length > 25 ? bilan.anomalies.substring(0, 25) + '...' : bilan.anomalies) : '-';
+        
+        return `
+            <tr>
+                <td><span class="badge" style="font-family: monospace;">#${shortId}</span></td>
+                <td>
+                    <div style="font-weight: 600; color: var(--primary);">Age: ${bilan.age || '?'} ans</div>
+                    <div style="font-size: 0.85em; color: var(--text-muted);">${bilan.sexe || 'Non spécifié'}</div>
+                </td>
+                <td><span style="color:var(--text-main); font-weight:500;">${bilan.ametropie || '-'}</span></td>
+                <td title="${bilan.anomalies || ''}">${anomaliesStr}</td>
+                <td><span class="badge badge-primary">${bilan.acuite_visuelle || '-'}</span></td>
+                <td>
+                    <div class="table-actions">
+                        <button onclick="viewBilan('${bilan._id}')" class="btn btn-secondary btn-sm" title="Voir les détails">
+                            <i data-lucide="eye" class="icon-btn"></i> Voir
+                        </button>
+                        <button onclick="deleteBilan('${bilan._id}')" class="btn btn-danger btn-sm" title="Supprimer">
+                            <i data-lucide="trash-2" class="icon-btn"></i>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+
+    html += `
+                </tbody>
+            </table>
         </div>
-    `).join('');
+    `;
 
+    // Contrôles de pagination
+    if (totalPages > 1) {
+        html += `
+            <div class="pagination">
+                <button class="btn btn-secondary btn-sm" onclick="changePage(${currentPage - 1})" ${currentPage === 1 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>
+                    <i data-lucide="chevron-left" class="icon-btn"></i> Précédent
+                </button>
+                <div class="page-info">
+                    Page <strong>${currentPage}</strong> sur <strong>${totalPages}</strong>
+                    <span class="ml-2" style="font-size: 0.85rem; color: var(--text-muted);">
+                        · Affichage de ${startIndex + 1} à ${Math.min(endIndex, bilansToDisplay.length)} sur ${bilansToDisplay.length}
+                    </span>
+                </div>
+                <button class="btn btn-secondary btn-sm" onclick="changePage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>
+                    Suivant <i data-lucide="chevron-right" class="icon-btn ml-1"></i>
+                </button>
+            </div>
+        `;
+    }
+
+    listDiv.innerHTML = html;
     lucide.createIcons();
 }
+
+// Fonction pour changer de page
+function changePage(newPage) {
+    currentPage = newPage;
+    filterBilans(); // Re-filtrer et afficher la bonne page
+}
+
 
 // Filtrer les bilans
 function filterBilans() {

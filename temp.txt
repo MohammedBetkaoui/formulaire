@@ -1,0 +1,48 @@
+// Afficher les bilans
+function displayBilans(bilansToDisplay) {
+    const listDiv = document.getElementById('bilansList');
+    
+    // Mettre à jour l'affichage du total
+    const totalElement = document.getElementById('totalBilansCount');
+    if (totalElement) {
+        totalElement.textContent = calculerTotalBilans(bilansToDisplay);
+    }
+
+    if (bilansToDisplay.length === 0) {
+        listDiv.innerHTML = '<p class="loading">Aucun bilan trouve</p>';
+        return;
+    }
+
+    listDiv.innerHTML = bilansToDisplay.map(bilan => `
+        <div class="bilan-card">
+            <div class="bilan-card-header">
+                <h4>
+                    <i data-lucide="user" class="icon-btn"></i>
+                    Age: ${bilan.age || '�'} | ${bilan.sexe || '�'}
+                </h4>
+                <div class="bilan-card-actions">
+                    <button onclick="viewBilan('${bilan._id}')" class="btn btn-secondary"><i data-lucide="eye" class="icon-btn"></i> Voir</button>
+                    <button onclick="deleteBilan('${bilan._id}')" class="btn btn-danger"><i data-lucide="trash-2" class="icon-btn"></i></button>
+                </div>
+            </div>
+            <div class="bilan-card-content">
+                <div class="bilan-info">
+                    <strong>Ametropie</strong>
+                    <span>${bilan.ametropie || '�'}</span>
+                </div>
+                <div class="bilan-info">
+                    <strong>Anomalies</strong>
+                    <span>${bilan.anomalies || '�'}</span>
+                </div>
+                <div class="bilan-info">
+                    <strong>Acuite Visuelle</strong>
+                    <span>${bilan.acuite_visuelle || '�'}</span>
+                </div>
+
+            </div>
+        </div>
+    `).join('');
+
+    lucide.createIcons();
+}
+
