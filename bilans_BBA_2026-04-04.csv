@@ -1,0 +1,302 @@
+﻿age;sexe;ametropie;anomalies;acuite_visuelle;ametropie_myopie;ametropie_hypermetropie;ametropie_astigmatisme;anomalie_insuffisance_accommodation;anomalie_exces_accommodation;anomalie_fatigue_accommodative;anomalie_spasme_accommodatif;anomalie_inertie_accommodative;anomalie_paralysie_accommodative;anomalie_insuffisance_convergence;anomalie_pseudo_insuffisance_convergence;anomalie_exces_convergence;anomalie_insuffisance_convergence_pure;anomalie_esophorie_basique;anomalie_insuffisance_divergence;anomalie_exophorie_basique;anomalie_exces_divergence;anomalie_phorie_verticale_hyper_d_g;anomalie_phorie_verticale_hyper_g_d;anomalie_paralysie_oculomotrice;anomalie_dysfonctionnement_vergentiel;anomalie_reserves_fusionnelles_reduites;anomalie_pas_d_anomalie
+25;Femme;Astigmatisme;Excès d'accommodation, Excès de convergence;15 oct;0;0;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Astigmatisme;Excès de convergence;10 oct;0;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+35;Femme;Myopie;Excès d'accommodation, Insuffisance de convergence;12 oct;1;0;0;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;Insuffisance de convergence;10 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+18;Homme;Hypermétropie;Pas d'anomalie;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+26;Femme;Myopie, Astigmatisme;Insuffisance de convergence;12 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Astigmatisme;Fatigue accommodative;12 oct;0;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+28;Femme;Hypermétropie, Astigmatisme;Fatigue accommodative;10 oct;0;1;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+42;Homme;Myopie, Astigmatisme;Réserves fusionnelles réduites;8 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0
+16;Femme;Myopie;Pas d'anomalie;12 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Hypermétropie;Excès d'accommodation;20 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+36;Homme;Hypermétropie, Astigmatisme;Pseudo-insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0
+27;Femme;Myopie, Astigmatisme;Pas d'anomalie;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+28;Femme;Astigmatisme;Insuffisance de convergence pure;10 oct;0;0;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0
+23;Femme;Astigmatisme;Pseudo-insuffisance de convergence;12 oct;0;0;1;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;Excès de divergence;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0
+32;Homme;Hypermétropie, Astigmatisme;Excès d'accommodation;12 oct;0;1;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Homme;Astigmatisme;Excès d'accommodation;12 oct;0;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+50;Femme;Hypermétropie;Insuffisance de divergence;12 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0
+27;Homme;Myopie;Fatigue accommodative;15 oct;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+37;Femme;Hypermétropie, Astigmatisme;Exophorie basique;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0
+25;Homme;Myopie, Astigmatisme;Fatigue accommodative;12 oct;1;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;20 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+18;Femme;;Pas d'anomalie;15 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+35;Homme;Myopie, Astigmatisme;Pas d'anomalie;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+9;Femme;Myopie, Astigmatisme;;9 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Homme;Astigmatisme;Insuffisance de convergence;12 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+34;Homme;Myopie;Insuffisance de convergence;12 oct;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Hypermétropie, Astigmatisme;Excès de convergence;10 oct;0;1;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+64;Homme;Myopie, Astigmatisme;Pas d'anomalie;8 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Astigmatisme;Exophorie basique;8 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0
+67;Homme;Myopie, Astigmatisme;Pas d'anomalie;9 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+24;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+79;Homme;Myopie;Insuffisance de convergence;7 oct;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+19;Homme;Astigmatisme;Pas d'anomalie;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+20;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+25;Femme;Astigmatisme;Excès de divergence;10 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0
+35;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+18;Femme;Astigmatisme;Excès d'accommodation, Insuffisance de convergence;10 oct;0;0;1;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Astigmatisme;Insuffisance de convergence;12 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+15;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;12 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Hypermétropie, Astigmatisme;Pseudo-insuffisance de convergence;10 oct;0;1;1;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Homme;Myopie, Astigmatisme;;8 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Myopie, Astigmatisme;Pas d'anomalie;10 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+29;Femme;Astigmatisme;Insuffisance de convergence;12 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+19;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;20 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Myopie, Astigmatisme;Insuffisance d'accommodation;15 oct;1;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+15;Homme;Astigmatisme;Pas d'anomalie;20 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+29;Femme;Astigmatisme;Insuffisance de divergence;15 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0
+11;Homme;Hypermétropie, Astigmatisme;;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+31;Femme;Myopie;Pas d'anomalie;12 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+20;Femme;Astigmatisme;Excès d'accommodation;15 oct;0;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Myopie, Astigmatisme;Pas d'anomalie;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+33;Homme;Astigmatisme;Phorie verticale hyper G/D;4 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+17;Homme;Myopie, Astigmatisme;Insuffisance de divergence;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0
+24;Homme;Hypermétropie;Pas d'anomalie;20 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;9 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie;Excès d'accommodation;15 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+34;Femme;Myopie;Inertie accommodative;10 oct;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Myopie, Astigmatisme;Insuffisance d'accommodation;20 oct;1;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Femme;Myopie;Pas d'anomalie;10 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Hypermétropie;Excès d'accommodation;15 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+30;Femme;Myopie;Pas d'anomalie;15 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+31;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Hypermétropie;Ésophorie basique;12 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0
+26;Homme;Hypermétropie;;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Femme;Myopie;Pas d'anomalie;15 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+28;Femme;Hypermétropie, Astigmatisme;Fatigue accommodative;10 oct;0;1;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;9 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+25;Homme;Hypermétropie;Pas d'anomalie;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+20;Femme;Hypermétropie, Astigmatisme;Excès d'accommodation, Excès de convergence;10 oct;0;1;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+27;Femme;Hypermétropie, Astigmatisme;Insuffisance de divergence;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;20 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie;Excès d'accommodation, Insuffisance de convergence;15 oct;0;1;0;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Homme;Myopie, Astigmatisme;Insuffisance de convergence;15 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+45;Femme;Astigmatisme;Insuffisance de convergence;12 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Astigmatisme;Inertie accommodative;15 oct;0;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+24;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Femme;Myopie, Astigmatisme;Pseudo-insuffisance de convergence;15 oct;1;0;1;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;;Pas d'anomalie;15 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+31;Femme;Myopie;Pas d'anomalie;12 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+20;Homme;Myopie, Astigmatisme;Pas d'anomalie;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Homme;Astigmatisme;Excès d'accommodation;15 oct;0;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Myopie, Astigmatisme;Insuffisance de divergence;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0
+27;Femme;Astigmatisme;Insuffisance de convergence;15 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Hypermétropie;;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+16;Femme;Myopie;Pas d'anomalie;9 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+18;Homme;Myopie, Astigmatisme;Insuffisance de convergence;15 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Myopie, Astigmatisme;Pas d'anomalie;10 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Homme;Hypermétropie;Pas d'anomalie;10 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+24;Femme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;10 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;;Pas d'anomalie;15 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Femme;Astigmatisme;Excès de convergence;12 oct;0;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Astigmatisme;Pas d'anomalie;15 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Astigmatisme;Pas d'anomalie;15 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+29;Femme;Astigmatisme;Pas d'anomalie;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+25;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+27;Femme;Hypermétropie;Insuffisance d'accommodation;10 oct;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+27;Homme;Hypermétropie, Astigmatisme;Excès d'accommodation;12 oct;0;1;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence pure;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Astigmatisme;Pas d'anomalie;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+16;Femme;Myopie;Phorie verticale hyper G/D;9 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0
+23;Femme;Myopie, Astigmatisme;Pas d'anomalie;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;9 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+6;Femme;;;10 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+20;Homme;;;20 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+11;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Myopie;Insuffisance d'accommodation;10 oct;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+65;Femme;Myopie, Astigmatisme;;8 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Femme;Myopie, Astigmatisme;Insuffisance de convergence;15 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;20 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Femme;Hypermétropie, Astigmatisme;;8 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Astigmatisme;Insuffisance de convergence;10 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Femme;Myopie, Astigmatisme;;5 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Homme;Astigmatisme;Insuffisance d'accommodation;20 oct;0;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Homme;Myopie, Astigmatisme;;5 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Astigmatisme;;20 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17;Femme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;10 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+19;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;9 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie;;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+19;Femme;Hypermétropie;;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Femme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Myopie, Astigmatisme;Pas d'anomalie;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Femme;;;15 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Astigmatisme;Insuffisance de convergence;12 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Femme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation, Insuffisance de convergence;9 oct;0;1;1;1;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;;;10 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;20 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Astigmatisme;;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+7;Femme;;;12 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Myopie, Astigmatisme;Pas d'anomalie;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Hypermétropie;Insuffisance d'accommodation;15 oct;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie;Excès d'accommodation;12 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+70;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+67;Femme;Myopie, Astigmatisme;;2 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+30;Homme;Astigmatisme;Excès d'accommodation, Insuffisance de convergence;12 oct;0;0;1;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Myopie, Astigmatisme;;8 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Homme;Myopie, Astigmatisme;Excès de divergence;20 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0
+33;Femme;Hypermétropie, Astigmatisme;Spasme accommodatif;15 oct;0;1;1;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+8;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+30;Femme;Astigmatisme;Pas d'anomalie;15 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+30;Femme;Astigmatisme;Insuffisance de convergence;15 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+12;Homme;Astigmatisme;;10 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Homme;Myopie, Astigmatisme;Pas d'anomalie;20 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Homme;Hypermétropie, Astigmatisme;;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Femme;Astigmatisme;Insuffisance de convergence;15 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+47;Homme;Myopie, Astigmatisme;;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Myopie, Astigmatisme;Excès d'accommodation;10 oct;1;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;Fatigue accommodative;10 oct;0;1;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+9;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Myopie, Astigmatisme;;10 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+38;Femme;Myopie, Astigmatisme;Excès d'accommodation;12 oct;1;0;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+40;Homme;Myopie;Insuffisance d'accommodation;15 oct;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Myopie, Astigmatisme;Excès de convergence;10 oct;1;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+12;Homme;Hypermétropie;;8 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+30;Femme;Hypermétropie, Astigmatisme;Insuffisance de divergence;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0
+24;Homme;Astigmatisme;;15 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;15 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Myopie, Astigmatisme;;10 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+35;Femme;Myopie, Astigmatisme;Exophorie basique;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0
+27;Femme;Astigmatisme;;10 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Femme;;Paralysie accommodative;12 oct;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;10 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+27;Homme;Hypermétropie;Pas d'anomalie;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Astigmatisme;Insuffisance d'accommodation;12 oct;0;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Myopie;;15 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+34;Femme;Myopie;Insuffisance de convergence;15 oct;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+31;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+36;Homme;Astigmatisme;Excès d'accommodation, Insuffisance de convergence;12 oct;0;0;1;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Hypermétropie, Astigmatisme;;6 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Femme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+32;Femme;Myopie;Insuffisance de convergence;15 oct;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Hypermétropie, Astigmatisme;;5 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;20 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17;Femme;Myopie, Astigmatisme;Insuffisance de convergence;12 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Myopie, Astigmatisme;;20 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+19;Femme;Myopie, Hypermétropie;Exophorie basique;12 oct;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0
+22;Femme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Homme;;Pas d'anomalie;10 oct;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+22;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Myopie;Phorie verticale hyper D/G;10 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Femme;Hypermétropie, Astigmatisme;Insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Myopie, Astigmatisme;;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;;6 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;10 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Hypermétropie, Astigmatisme;;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Femme;Myopie, Astigmatisme;Excès de convergence;15 oct;1;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Myopie;;15 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Astigmatisme;;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie;Excès d'accommodation;15 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Myopie, Astigmatisme;;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Astigmatisme;;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Myopie, Astigmatisme;Phorie verticale hyper D/G;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+17;Homme;Hypermétropie;;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+32;Femme;Myopie;;8 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Myopie, Astigmatisme;;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+33;Homme;Hypermétropie;;12 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+30;Femme;Myopie, Astigmatisme;Insuffisance de convergence;12 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+28;Femme;Myopie, Astigmatisme;Insuffisance d'accommodation;12 oct;1;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+28;Femme;Myopie, Astigmatisme;Insuffisance d'accommodation;12 oct;1;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Myopie, Astigmatisme;Insuffisance de convergence;10 oct;1;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Myopie;;15 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;20 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+49;Femme;Myopie, Astigmatisme;;8 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Myopie, Hypermétropie, Astigmatisme;Insuffisance de convergence;15 oct;1;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+18;Femme;Hypermétropie, Astigmatisme;Insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Femme;Myopie, Astigmatisme;;10 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+24;Femme;Myopie, Astigmatisme;;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;20 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+16;Femme;Myopie, Hypermétropie, Astigmatisme;;12 oct;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Myopie, Astigmatisme;Excès de convergence;15 oct;1;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Insuffisance de convergence;12 oct;0;1;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+23;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;20 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Femme;Myopie;Pseudo-insuffisance de convergence;12 oct;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0
+26;Femme;Hypermétropie, Astigmatisme;Excès de convergence;12 oct;0;1;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Astigmatisme;Excès de convergence;10 oct;0;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+23;Femme;Myopie, Astigmatisme;Réserves fusionnelles réduites;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0
+27;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+26;Femme;Astigmatisme;Insuffisance d'accommodation;12 oct;0;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+20;Femme;Myopie;;9 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+62;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Homme;Hypermétropie;Excès de convergence;20 oct;0;1;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+31;Homme;Myopie, Astigmatisme;Insuffisance d'accommodation;12 oct;1;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie;Excès d'accommodation;15 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+16;Femme;Myopie, Astigmatisme;Pas d'anomalie;10 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+26;Femme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation;10 oct;0;1;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Femme;Myopie, Astigmatisme;Fatigue accommodative;12 oct;1;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Homme;Astigmatisme;Insuffisance de convergence;10 oct;0;0;1;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Myopie, Astigmatisme;Excès de convergence;15 oct;1;0;1;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie, Astigmatisme;;9 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+19;Femme;Astigmatisme;Pas d'anomalie;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+15;Homme;Hypermétropie, Astigmatisme;;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie, Astigmatisme;Excès d'accommodation, Insuffisance de convergence;15 oct;0;1;1;0;1;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+29;Femme;Myopie, Astigmatisme;Pas d'anomalie;15 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+25;Homme;Hypermétropie, Astigmatisme;Fatigue accommodative;20 oct;0;1;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+21;Femme;Astigmatisme;;12 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Homme;Hypermétropie;Réserves fusionnelles réduites;15 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0
+29;Femme;Astigmatisme;Pas d'anomalie;15 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+19;Homme;Astigmatisme;Pas d'anomalie;10 oct;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+17;Femme;Myopie;;10 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+21;Femme;Myopie;Insuffisance d'accommodation;10 oct;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Hypermétropie, Astigmatisme;Insuffisance d'accommodation, Excès de convergence;12 oct;0;1;1;1;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0
+21;Femme;Hypermétropie, Astigmatisme;Pas d'anomalie;15 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+17;Femme;Myopie;Excès de divergence;12 oct;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0;0
+18;Femme;Myopie, Astigmatisme;Insuffisance d'accommodation;9 oct;1;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Hypermétropie;Pas d'anomalie;20 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+26;Homme;Myopie, Astigmatisme;Phorie verticale hyper D/G;12 oct;1;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1;0;0;0;0;0
+27;Homme;Hypermétropie, Astigmatisme;Pas d'anomalie;12 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;1
+23;Homme;Hypermétropie;Insuffisance de convergence;12 oct;0;1;0;0;0;0;0;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0
+71;Homme;Hypermétropie, Astigmatisme;;4 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+25;Femme;Hypermétropie, Astigmatisme;;10 oct;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+18;Femme;Hypermétropie;;12 oct;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Femme;Hypermétropie;Excès d'accommodation;12 oct;0;1;0;0;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0
+22;Homme;Astigmatisme;Insuffisance d'accommodation;10 oct;0;0;1;1;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0;0

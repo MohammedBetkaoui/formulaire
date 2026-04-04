@@ -6,7 +6,11 @@ const { Parser } = require('json2csv');
 // Creer un nouveau bilan
 router.post('/', async (req, res) => {
   try {
-    const bilan = new BilanVisuel(req.body);
+    const payload = {
+      ...req.body,
+      acuite_visuelle: normalizeAcuiteVisuelle(req.body.acuite_visuelle)
+    };
+    const bilan = new BilanVisuel(payload);
     await bilan.save();
     res.status(201).json({
       success: true,
@@ -115,6 +119,37 @@ function hasCsvChoice(choices, label) {
   return choices.has(resolvedLabel);
 }
 
+function normalizeAcuiteVisuelle(rawValue) {
+  if (rawValue == null) return '';
+
+  const value = String(rawValue).trim();
+  if (!value) return '';
+
+  const compact = value.replace(/\s+/g, '');
+  if (/^<\s*1\/10$/i.test(value) || /^<1\/10$/i.test(compact)) {
+    return '< 1/10';
+  }
+
+  const slashMatch = value.match(/^(\d{1,2})\s*\/\s*10$/);
+  if (slashMatch) {
+    return `${parseInt(slashMatch[1], 10)}/10`;
+  }
+
+  // Corrige les valeurs deformees par Excel, ex: "15 oct" ou "oct 15".
+  const monthLike = '(?:oct(?:\\.|obre)?)';
+  const dayMonthRegex = new RegExp(`^(\\d{1,2})\\s*[\\-\\/\\.]?\\s*${monthLike}$`, 'i');
+  const monthDayRegex = new RegExp(`^${monthLike}\\s*[\\-\\/\\.]?\\s*(\\d{1,2})$`, 'i');
+
+  let match = value.match(dayMonthRegex);
+  if (!match) match = value.match(monthDayRegex);
+
+  if (match) {
+    return `${parseInt(match[1], 10)}/10`;
+  }
+
+  return value;
+}
+
 // Exporter les bilans en CSV (must be before /:id)
 router.get('/export/csv', async (req, res) => {
   try {
@@ -156,7 +191,7 @@ router.get('/export/csv', async (req, res) => {
         sexe: v(bilan.sexe),
         ametropie: v(bilan.ametropie),
         anomalies: v(bilan.anomalies),
-        acuite_visuelle: v(bilan.acuite_visuelle)
+        acuite_visuelle: v(normalizeAcuiteVisuelle(bilan.acuite_visuelle))
       };
 
       AMETROPIE_EXPORT_OPTIONS.forEach((option) => {
@@ -248,9 +283,14 @@ router.get('/:id', async (req, res) => {
 // Mettre a jour un bilan
 router.put('/:id', async (req, res) => {
   try {
+    const payload = {
+      ...req.body,
+      acuite_visuelle: normalizeAcuiteVisuelle(req.body.acuite_visuelle)
+    };
+
     const bilan = await BilanVisuel.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      payload,
       { new: true, runValidators: true }
     );
     if (!bilan) {
